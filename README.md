@@ -8,7 +8,7 @@
 
 - **`SKILL.md`** — 入口；YAML 前言区至少含 `name`、`description`，正文为智能体须遵循的步骤与约束。
 - **`scripts/`** — 可执行脚本或可复用 CLI，供 SKILL 正文引用调用。
-- **`reference/`** — 长说明、附录、细则，按需拆出以免 `SKILL.md` 过长。
+- **`references/`** — 长说明、附录、细则，按需拆出以免 `SKILL.md` 过长。
 - **`assets/`** — 图片、示例数据、模板等静态资源，`SKILL.md` 中用相对路径引用。
 
 本仓库技能放在 **`skills/<技能名>/`**（如 `api-docs`、`prd-creator`）。
