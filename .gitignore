@@ -1,0 +1,28 @@
+# 操作系统与桌面
+.DS_Store
+Thumbs.db
+
+# 编辑器与本地工具（按需保留团队共享的配置时可删除对应行）
+.idea/
+*.swp
+*.swo
+*~
+
+# 环境与本机密钥（若在仓库根目录放过）
+.env
+.env.*
+!.env.example
+
+# Python（若日后在仓库内运行脚本）
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node（若日后在仓库内放示例工程）
+node_modules/
+
+# 日志与临时文件
+*.log
+*.tmp
+.cache/
