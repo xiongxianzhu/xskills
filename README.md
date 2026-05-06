@@ -38,6 +38,8 @@ npx skills remove [技能名…]                    # 卸载（同 npx skills rm
 - [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md)：高完成度前端界面
 - [find-skills](https://github.com/vercel-labs/skills)：在对话里发现、安装技能，配合 `npx skills find` / `add`
 - [git-commit](https://skills.sh/github/awesome-copilot/git-commit)：撰写规范 Git 提交信息（约定式提交 / Conventional Commits）
+- [prd](https://skills.sh/github/awesome-copilot/prd)：撰写规范化 PRD / 产品需求文档（本仓库同名能力为 [prd-creator](./skills/prd-creator/SKILL.md)）
+- [to-prd](https://skills.sh/mattpocock/skills/to-prd)：基于当前对话与代码库理解合成 PRD（模块拆分、实现/测试决策、Out of Scope；与上文「prd」的访谈式流程互补）
 
 cli安装:
 
@@ -45,6 +47,8 @@ cli安装:
 npx skills add anthropics/skills --skill frontend-design -g -y
 npx skills add vercel-labs/skills --skill find-skills -g -y
 npx skills add github/awesome-copilot --skill git-commit -g -y
+npx skills add github/awesome-copilot --skill prd -g -y
+npx skills add mattpocock/skills --skill to-prd -g -y
 ```
 
 ## 许可
