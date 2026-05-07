@@ -1,0 +1,30 @@
+# xskills
+
+> 个人维护的 Agent Skills 集合：`skills/` 下各技能遵循通用 SKILL 约定，配合 `npx skills` CLI 安装到 Cursor、Claude Code 等智能体可用的全局技能目录。
+
+本仓库**不含应用业务代码**，核心是可复用的 **`SKILL.md` 入口**与 **references/** 规范/示例；入口说明、CLI 用法与推荐阅读见根目录 README。
+
+## Documentation
+
+- [README](README.md): 仓库说明、Skill 目录约定、`npx skills` 命令摘要、安装本仓库技能、`LICENSE` 入口
+- [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
+- [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
+
+## Specifications
+
+- [API 文档编写规范](skills/api-docs/references/specification.md): 小节结构、参数表约定与禁止省略规则
+- [PRD 模板与撰稿细则](skills/prd-creator/references/template.md): PRD 结构、表述规范与输出路径建议
+
+## Examples
+
+- [API 文档示例（虚构图书管理系统）](skills/api-docs/references/examples.md): 与 specification 对齐的完整示例
+- [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 简化版 / 标准版示例
+
+## Configuration
+
+- [Git 工作流约定（分支与 Conventional Commits）](.cursor/rules/git-workflow.mdc): 本仓库协作时建议遵循的提交与分支命名
+- [.gitignore](.gitignore): 版本库忽略规则
+
+## Optional
+
+- [LICENSE](LICENSE): 开源许可正文

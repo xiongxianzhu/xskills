@@ -2,6 +2,8 @@
 
 个人开发的 **Agent Skills** 集合，与各智能体共用同一套 Skill 约定。
 
+若你是 **大语言模型 / Agent**：请先阅读仓库根目录的 **[llms.txt](llms.txt)**，其中按 [llmstxt.org](https://llmstxt.org/) 整理了本仓库的文档导航与本技能集要点，便于快速对齐上下文。
+
 ## Skill 目录结构
 
 每个技能独占一个文件夹，按需包含：
@@ -33,6 +35,41 @@ npx skills remove [技能名…]                    # 卸载（同 npx skills rm
 
 常用选项：`-g` / `--global` 装到用户目录；`-a` / `--agent` 指定智能体（如 `cursor`、`claude-code`）；`--copy` 复制而非符号链接。发现与规范见 [skills.sh](https://skills.sh)、[Agent Skills 规范](https://agentskills.io)。
 
+## 安装本仓库技能
+
+本仓库内技能均在 **`skills/<技能名>/`** 目录下，可由 CLI 把该目录当作「技能包源」引用（源地址为 **仓库根路径** 或 **GitHub 短名**，不是 `skills/` 子目录本身）。
+
+当前包含：
+
+| 技能名 | 说明 |
+| --- | --- |
+| `api-docs` | [编写 API 文档](./skills/api-docs/SKILL.md)（按仓库内 specification 格式） |
+| `prd-creator` | [编写 PRD / 需求文档](./skills/prd-creator/SKILL.md) |
+
+**已克隆仓库时**：在克隆根目录执行（`.` 表示当前仓库根）。
+
+```bash
+cd xskills
+
+npx skills add . --list                      # 仅列出本仓库内可安装的技能
+
+npx skills add . --skill api-docs -g -y       # 安装 api-docs（全局）
+npx skills add . --skill prd-creator -g -y    # 安装 prd-creator（全局）
+
+# 指定 Agent（若自动检测不是你用的那个）
+npx skills add . --skill api-docs -a cursor -g -y
+```
+
+**未克隆、从 GitHub 安装**（请将短名与你的 fork 一致；以下为当前上游示例）：
+
+```bash
+npx skills add xiongxianzhu/xskills --list
+npx skills add xiongxianzhu/xskills --skill api-docs -g -y
+npx skills add xiongxianzhu/xskills --skill prd-creator -g -y
+```
+
+也可用完整 Git HTTPS URL：`npx skills add https://github.com/xiongxianzhu/xskills.git --skill api-docs -g -y`。安装后可用 `npx skills list` 确认是否已就绪。
+
 ## 推荐
 
 - [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md)：高完成度前端界面
@@ -49,6 +86,8 @@ npx skills add vercel-labs/skills --skill find-skills -g -y
 npx skills add github/awesome-copilot --skill git-commit -g -y
 npx skills add github/awesome-copilot --skill prd -g -y
 npx skills add mattpocock/skills --skill to-prd -g -y
+npx skills add github/awesome-copilot --skill create-llms -g -y
+npx skills add github/awesome-copilot --skill update-llms -g -y
 ```
 
 ## 许可
