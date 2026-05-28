@@ -77,6 +77,7 @@ npx skills add xiongxianzhu/xskills --skill prd-creator -g -y
 - [git-commit](https://skills.sh/github/awesome-copilot/git-commit)：撰写规范 Git 提交信息（约定式提交 / Conventional Commits）
 - [prd](https://skills.sh/github/awesome-copilot/prd)：撰写规范化 PRD / 产品需求文档（本仓库同名能力为 [prd-creator](./skills/prd-creator/SKILL.md)）
 - [to-prd](https://skills.sh/mattpocock/skills/to-prd)：基于当前对话与代码库理解合成 PRD（模块拆分、实现/测试决策、Out of Scope；与上文「prd」的访谈式流程互补）
+- [stitch::extract-design-md](https://skills.sh/google-labs-code/stitch-skills/stitch::extract-design-md)（来源 [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)）：从 React/Vue/Tailwind 等**前端源码**反推 **DESIGN.md** 设计系统（色板、字体、间距、组件模式），无需先跑起来；与同仓库基于渲染 HTML 的 `design-md` 互补，便于 Stitch 工作流
 
 cli安装:
 
@@ -88,6 +89,7 @@ npx skills add github/awesome-copilot --skill prd -g -y
 npx skills add mattpocock/skills --skill to-prd -g -y
 npx skills add github/awesome-copilot --skill create-llms -g -y
 npx skills add github/awesome-copilot --skill update-llms -g -y
+npx skills add google-labs-code/stitch-skills --skill stitch::extract-design-md -g -y
 ```
 
 ## 许可
