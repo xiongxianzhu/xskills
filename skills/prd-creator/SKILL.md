@@ -1,6 +1,6 @@
 ---
 name: prd-creator
-description: 根据用户提问生成专业规范的项目需求文档（PRD）。在用户要求创建 PRD、撰写需求文档、起草产品需求或记录项目需求时使用。
+description: 根据用户提问生成专业规范的产品需求文档（PRD）。在用户要求创建 PRD、撰写需求文档、起草产品需求或记录项目需求时使用。
 ---
 
 # PRD 创建（prd-creator）
