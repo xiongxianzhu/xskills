@@ -37,7 +37,15 @@ npx skills remove [技能名…]                    # 卸载（同 npx skills rm
 
 ## 安装本仓库技能
 
-本仓库内技能均在 **`skills/<技能名>/`** 目录下，可由 CLI 把该目录当作「技能包源」引用（源地址为 **仓库根路径** 或 **GitHub 短名**，不是 `skills/` 子目录本身）。
+本仓库内技能均在 **`skills/<技能名>/`** 目录下。`npx skills add` 会**扫描仓库中的 `skills/` 文件夹**；指定仓库根为源时，**不**加 `--skill` 则会**安装其中全部技能**。
+
+**一键安装本仓库全部技能**（推荐）：
+
+```bash
+npx skills add https://github.com/xiongxianzhu/xskills -g -y
+```
+
+源地址为**仓库根**（或 GitHub 短名 / 本地 `.`），**不是**单独指向 `skills/` 子目录。加 `-g` 装到用户全局技能目录；加 `-a cursor` 等可指定智能体。
 
 当前包含：
 
@@ -51,24 +59,26 @@ npx skills remove [技能名…]                    # 卸载（同 npx skills rm
 ```bash
 cd xskills
 
-npx skills add . --list                      # 仅列出本仓库内可安装的技能
+npx skills add . -g -y                       # 安装 skills/ 下全部技能（全局）
 
-npx skills add . --skill api-docs -g -y       # 安装 api-docs（全局）
-npx skills add . --skill prd-creator -g -y    # 安装 prd-creator（全局）
+npx skills add . --list                      # 仅列出本仓库内可安装的技能
+npx skills add . --skill api-docs -g -y      # 只安装 api-docs
+npx skills add . --skill prd-creator -g -y   # 只安装 prd-creator
 
 # 指定 Agent（若自动检测不是你用的那个）
-npx skills add . --skill api-docs -a cursor -g -y
+npx skills add . -a cursor -g -y
 ```
 
 **未克隆、从 GitHub 安装**（请将短名与你的 fork 一致；以下为当前上游示例）：
 
 ```bash
-npx skills add xiongxianzhu/xskills --list
-npx skills add xiongxianzhu/xskills --skill api-docs -g -y
-npx skills add xiongxianzhu/xskills --skill prd-creator -g -y
+npx skills add https://github.com/xiongxianzhu/xskills -g -y   # 安装 skills/ 下全部技能
+
+npx skills add xiongxianzhu/xskills --list                     # 仅列出可安装技能
+npx skills add xiongxianzhu/xskills --skill api-docs -g -y     # 只安装某一个
 ```
 
-也可用完整 Git HTTPS URL：`npx skills add https://github.com/xiongxianzhu/xskills.git --skill api-docs -g -y`。安装后可用 `npx skills list` 确认是否已就绪。
+短名与 HTTPS URL 等价；仅安装单个技能时用 `--skill <名>`。安装后可用 `npx skills list` 确认是否已就绪。
 
 ## 推荐
 
