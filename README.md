@@ -53,6 +53,7 @@ npx skills add https://github.com/xiongxianzhu/xskills -g -y
 | --- | --- |
 | `api-docs` | [编写 API 文档](./skills/api-docs/SKILL.md)（按仓库内 specification 格式） |
 | `prd-creator` | [编写 PRD / 需求文档](./skills/prd-creator/SKILL.md) |
+| `agnes-image` | [Agnes 生图](./skills/agnes-image/SKILL.md)（Agnes Image 2.1 Flash 文生图 / 图生图） |
 
 **已克隆仓库时**：在克隆根目录执行（`.` 表示当前仓库根）。
 
