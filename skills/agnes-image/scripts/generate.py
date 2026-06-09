@@ -20,8 +20,7 @@ API_URL = "https://apihub.agnes-ai.com/v1/images/generations"
 MODEL = "agnes-image-2.1-flash"
 TIMEOUT = 360
 
-# 跳过 SSL 证书校验（规避 macOS 自带 Python 缺少 CA 证书导致的
-# CERTIFICATE_VERIFY_FAILED）。
+# 跳过 SSL 证书校验。
 SSL_CTX = ssl.create_default_context()
 SSL_CTX.check_hostname = False
 SSL_CTX.verify_mode = ssl.CERT_NONE
