@@ -11,6 +11,7 @@ import base64
 import json
 import mimetypes
 import os
+import ssl
 import sys
 import urllib.request
 import urllib.error
@@ -18,6 +19,12 @@ import urllib.error
 API_URL = "https://apihub.agnes-ai.com/v1/images/generations"
 MODEL = "agnes-image-2.1-flash"
 TIMEOUT = 360
+
+# 跳过 SSL 证书校验（规避 macOS 自带 Python 缺少 CA 证书导致的
+# CERTIFICATE_VERIFY_FAILED）。
+SSL_CTX = ssl.create_default_context()
+SSL_CTX.check_hostname = False
+SSL_CTX.verify_mode = ssl.CERT_NONE
 
 
 def to_image_ref(ref: str) -> str:
@@ -62,7 +69,7 @@ def call_api(body: dict, api_key: str) -> dict:
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+        with urllib.request.urlopen(req, timeout=TIMEOUT, context=SSL_CTX) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         detail = e.read().decode("utf-8", "replace")
@@ -74,7 +81,9 @@ def call_api(body: dict, api_key: str) -> dict:
 def save_result(item: dict, out: str) -> None:
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     if item.get("url"):
-        urllib.request.urlretrieve(item["url"], out)
+        with urllib.request.urlopen(item["url"], timeout=TIMEOUT, context=SSL_CTX) as resp:
+            with open(out, "wb") as f:
+                f.write(resp.read())
     elif item.get("b64_json"):
         with open(out, "wb") as f:
             f.write(base64.b64decode(item["b64_json"]))
