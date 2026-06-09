@@ -10,12 +10,14 @@
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
 - [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
 - [agnes-image Skill 入口](skills/agnes-image/SKILL.md): Agnes Image 2.1 Flash 文生图 / 图生图技能的用法与约束
+- [agnes-video Skill 入口](skills/agnes-video/SKILL.md): Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧视频技能（异步任务式）的用法与约束
 
 ## Specifications
 
 - [API 文档编写规范](skills/api-docs/references/specification.md): 小节结构、参数表约定与禁止省略规则
 - [PRD 模板与撰稿细则](skills/prd-creator/references/template.md): PRD 结构、表述规范与输出路径建议
 - [Agnes Image API 参考](skills/agnes-image/references/api.md): 端点、参数、四种调用、响应与常见错误
+- [Agnes Video API 参考](skills/agnes-video/references/api.md): 异步端点、参数、四种调用、响应、状态与错误码
 
 ## Examples
 
