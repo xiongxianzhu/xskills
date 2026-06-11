@@ -104,7 +104,7 @@ npx skills add github/awesome-copilot --skill create-llms -g -y
 npx skills add github/awesome-copilot --skill update-llms -g -y
 npx skills add google-labs-code/stitch-skills --skill stitch::extract-design-md -g -y
 npx skills add laurigates/claude-plugins --skill git-branch-naming -g -y
-npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
+npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -y
 ```
 
 ## 许可
