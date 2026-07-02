@@ -7,8 +7,10 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-4-F59E0B?style=for-the-badge)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-5-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
+[![Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Stars&color=181717)](https://github.com/xiongxianzhu/xskills/stargazers)
+[![Forks](https://img.shields.io/github/forks/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Forks&color=181717)](https://github.com/xiongxianzhu/xskills/forks)
 
 </div>
 
@@ -53,27 +55,18 @@
 
 `npx skills add` 扫描仓库中的 `skills/` 目录；源地址为**仓库根**（非 `skills/` 子路径）。不加 `--skill` 时安装全部技能。
 
-**一键安装（推荐）**
+| 场景 | 命令 |
+| --- | --- |
+| 一键安装全部（推荐） | `npx skills add https://github.com/xiongxianzhu/xskills -g -y` |
+| 已克隆，安装全部 | `cd xskills && npx skills add . -g -y` |
+| 已克隆，列出可装技能 | `npx skills add . --list` |
+| 只装某一个 | `npx skills add . --skill dingtalk-log -g -y` |
+| 指定 Agent | `npx skills add . -a cursor -g -y` |
 
-```bash
-npx skills add https://github.com/xiongxianzhu/xskills -g -y
-```
-
-**已克隆仓库**
-
-```bash
-cd xskills
-npx skills add . -g -y                        # 安装全部
-npx skills add . --list                       # 仅列出
-npx skills add . --skill api-docs -g -y       # 安装单个
-npx skills add . -a cursor -g -y              # 指定 Agent
-```
-
-**从 GitHub（未克隆）**
+未克隆时，短名与 HTTPS URL 等价：
 
 ```bash
 npx skills add xiongxianzhu/xskills -g -y
-npx skills add xiongxianzhu/xskills --list
 npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 ```
 
@@ -81,12 +74,15 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 
 ## 本仓库技能
 
-| 技能 | 说明 |
-| --- | --- |
-| [`api-docs`](./skills/api-docs/SKILL.md) | 按仓库规范编写 API 文档 |
-| [`prd-creator`](./skills/prd-creator/SKILL.md) | 编写 PRD / 需求文档 |
-| [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 2.1 Flash 文生图 / 图生图 |
-| [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 |
+文档写作、需求整理、多媒体生成与日常办公辅助：
+
+| 技能 | 说明 | 文档 |
+| --- | --- | --- |
+| [`api-docs`](./skills/api-docs/SKILL.md) | 按仓库规范编写 API 文档 | [规范](./skills/api-docs/references/specification.md) |
+| [`prd-creator`](./skills/prd-creator/SKILL.md) | 编写 PRD / 需求文档 | [模板](./skills/prd-creator/references/template.md) |
+| [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 2.1 Flash 文生图 / 图生图 | [API](./skills/agnes-image/references/api.md) |
+| [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
+| [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [使用说明](./skills/dingtalk-log/references/usage.md) |
 
 ## 推荐技能
 
@@ -104,6 +100,7 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 | [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | Vercel 出品 React / Next.js 性能优化（70+ 规则） |
 | [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | 按 Web Interface Guidelines 审查 UI（无障碍、UX、性能） |
 | [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | 调用 OpenAI / Gemini 生图（自动检测 API Key） |
+| [technical-writer](https://github.com/shubhamsaboo/awesome-llm-apps) | 技术文档写作（README、API 文档、教程、变更说明） |
 
 **批量安装**
 
@@ -117,11 +114,12 @@ npx skills add github/awesome-copilot --skill create-llms -g -y
 npx skills add github/awesome-copilot --skill update-llms -g -y
 npx skills add google-labs-code/stitch-skills --skill stitch::extract-design-md -g -y
 npx skills add laurigates/claude-plugins --skill git-branch-naming -g -y
-npx skills add Leonxlnx/taste-skill --skill design-taste-frontend -g -y
+npx skills add leonxlnx/taste-skill --skill design-taste-frontend -g -y
 npx skills add anthropics/skills --skill skill-creator -g -y
 npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices -g -y
 npx skills add vercel-labs/agent-skills --skill web-design-guidelines -g -y
 npx skills add github/awesome-copilot --skill generate-image -g -y
+npx skills add shubhamsaboo/awesome-llm-apps --skill technical-writer -g -y
 ```
 
 ## 许可
