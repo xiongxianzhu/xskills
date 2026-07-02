@@ -107,6 +107,10 @@ npx skills add google-labs-code/stitch-skills --skill stitch::extract-design-md 
 npx skills add laurigates/claude-plugins --skill git-branch-naming -g -y
 npx skills add Leonxlnx/taste-skill --skill design-taste-frontend -g -y
 npx skills add anthropics/skills --skill skill-creator -g -y
+npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices -g -y
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines -g -y
+npx skills add github/awesome-copilot --skill generate-image -g -y
+npx skills add github/awesome-copilot --skill git-commit -g -y
 ```
 
 ## 许可
