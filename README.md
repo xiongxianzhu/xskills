@@ -6,7 +6,7 @@
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
-[![License](https://img.shields.io/github/license/xiongxianzhu/xskills?style=for-the-badge&color=22C55E)](./LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-4-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
 [![GitHub Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&color=181717)](https://github.com/xiongxianzhu/xskills)
