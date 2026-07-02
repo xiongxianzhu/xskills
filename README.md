@@ -1,101 +1,114 @@
+<div align="center">
+
 # xskills
 
-个人开发的 **Agent Skills** 集合，与各智能体共用同一套 Skill 约定。
+跨智能体共用的 **Agent Skills** 集合
 
-若你是 **大语言模型 / Agent**：请先阅读仓库根目录的 **[llms.txt](llms.txt)**，其中按 [llmstxt.org](https://llmstxt.org/) 整理了本仓库的文档导航与本技能集要点，便于快速对齐上下文。
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
+[![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
+[![License](https://img.shields.io/github/license/xiongxianzhu/xskills?style=for-the-badge&color=22C55E)](./LICENSE)
+[![Skills](https://img.shields.io/badge/Skills-4-F59E0B?style=for-the-badge)](./skills/)
+[![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
+[![GitHub Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&color=181717)](https://github.com/xiongxianzhu/xskills)
 
-## Skill 目录结构
+</div>
 
-每个技能独占一个文件夹，按需包含：
+---
 
-- **`SKILL.md`** — 入口；YAML 前言区至少含 `name`、`description`，正文为智能体须遵循的步骤与约束。
-- **`scripts/`** — 可执行脚本或可复用 CLI，供 SKILL 正文引用调用。
-- **`references/`** — 长说明、附录、细则，按需拆出以免 `SKILL.md` 过长。
-- **`assets/`** — 图片、示例数据、模板等静态资源，`SKILL.md` 中用相对路径引用。
+> **Agent / LLM**：请先阅读 [`llms.txt`](./llms.txt)（[llmstxt.org](https://llmstxt.org/) 格式），快速对齐本仓库文档导航与技能要点。
 
-本仓库技能放在 **`skills/<技能名>/`**（如 `api-docs`、`prd-creator`）。
+## 目录结构
 
-跨多种智能体的通用全局目录多为 **`~/.agents/skills/`**（与 `npx skills add -g` 等配合；个别智能体另有路径时以其文档为准）。
+每个技能位于 `skills/<技能名>/`，按需包含：
 
-## `npx skills` CLI
+| 路径 | 说明 |
+| --- | --- |
+| `SKILL.md` | 入口；YAML 含 `name`、`description`，正文为步骤与约束 |
+| `scripts/` | 可执行脚本 / CLI |
+| `references/` | 长文档、附录、细则 |
+| `assets/` | 模板、示例数据等静态资源 |
 
-包名为 **`skills`**，通过 npx 免安装调用（命令是 **`skills`**，不是 `skill`）。CLI 的官方说明见 npm：[skills](https://www.npmjs.com/package/skills)。
+全局安装目录通常为 `~/.agents/skills/`（配合 `npx skills add -g`；个别智能体路径以其文档为准）。
 
-```bash
-npx skills add <owner/repo|git-url|本地路径>   # 安装技能到已检测到的智能体目录
-npx skills add <源> --list                     # 仅列出源内可用技能
-npx skills add <源> --skill <名> -a <智能体> -g -y   # 指定技能、智能体、全局、跳过确认
+## CLI
 
-npx skills init [名称]                         # 生成 SKILL.md 模板
-npx skills list                                # 已安装技能（同 npx skills ls）
-npx skills list -g                             # 查看本地所有已安装的全局技能
-npx skills find [关键词]                      # 搜索 / 交互查找
-npx skills update [技能名…]                    # 更新
-npx skills remove [技能名…]                    # 卸载（同 npx skills rm）
-```
+包名 **`skills`**（非 `skill`），通过 npx 免安装调用。详见 [npm: skills](https://www.npmjs.com/package/skills)。
 
-常用选项：`-g` / `--global` 装到用户目录；`-a` / `--agent` 指定智能体（如 `cursor`、`claude-code`）；`--copy` 复制而非符号链接。发现与规范见 [skills.sh](https://skills.sh)、[Agent Skills 规范](https://agentskills.io)。
+| 命令 | 说明 |
+| --- | --- |
+| `npx skills add <源>` | 安装到已检测到的智能体目录 |
+| `npx skills add <源> --list` | 列出源内可用技能 |
+| `npx skills add <源> --skill <名> -a <智能体> -g -y` | 指定技能、智能体、全局、跳过确认 |
+| `npx skills init [名称]` | 生成 `SKILL.md` 模板 |
+| `npx skills list` / `ls` | 查看已安装技能 |
+| `npx skills list -g` | 查看本地所有已安装的全局技能 |
+| `npx skills find [关键词]` | 搜索 / 交互查找 |
+| `npx skills update [技能名…]` | 更新 |
+| `npx skills remove [技能名…]` / `rm` | 卸载 |
 
-## 安装本仓库技能
+常用选项：`-g` 全局安装 · `-a` 指定智能体（如 `cursor`） · `--copy` 复制而非符号链接。
 
-本仓库内技能均在 **`skills/<技能名>/`** 目录下。`npx skills add` 会**扫描仓库中的 `skills/` 文件夹**；指定仓库根为源时，**不**加 `--skill` 则会**安装其中全部技能**。
+规范与发现：[skills.sh](https://skills.sh) · [Agent Skills 规范](https://agentskills.io)
 
-**一键安装本仓库全部技能**（推荐）：
+## 安装
+
+`npx skills add` 扫描仓库中的 `skills/` 目录；源地址为**仓库根**（非 `skills/` 子路径）。不加 `--skill` 时安装全部技能。
+
+**一键安装（推荐）**
 
 ```bash
 npx skills add https://github.com/xiongxianzhu/xskills -g -y
 ```
 
-源地址为**仓库根**（或 GitHub 短名 / 本地 `.`），**不是**单独指向 `skills/` 子目录。加 `-g` 装到用户全局技能目录；加 `-a cursor` 等可指定智能体。
-
-当前包含：
-
-| 技能名 | 说明 |
-| --- | --- |
-| `api-docs` | [编写 API 文档](./skills/api-docs/SKILL.md)（按仓库内 specification 格式） |
-| `prd-creator` | [编写 PRD / 需求文档](./skills/prd-creator/SKILL.md) |
-| `agnes-image` | [Agnes 生图](./skills/agnes-image/SKILL.md)（Agnes Image 2.1 Flash 文生图 / 图生图） |
-| `agnes-video` | [Agnes 生视频](./skills/agnes-video/SKILL.md)（Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧） |
-
-**已克隆仓库时**：在克隆根目录执行（`.` 表示当前仓库根）。
+**已克隆仓库**
 
 ```bash
 cd xskills
-
-npx skills add . -g -y                       # 安装 skills/ 下全部技能（全局）
-
-npx skills add . --list                      # 仅列出本仓库内可安装的技能
-npx skills add . --skill api-docs -g -y      # 只安装 api-docs
-npx skills add . --skill prd-creator -g -y   # 只安装 prd-creator
-
-# 指定 Agent（若自动检测不是你用的那个）
-npx skills add . -a cursor -g -y
+npx skills add . -g -y                        # 安装全部
+npx skills add . --list                       # 仅列出
+npx skills add . --skill api-docs -g -y       # 安装单个
+npx skills add . -a cursor -g -y              # 指定 Agent
 ```
 
-**未克隆、从 GitHub 安装**（请将短名与你的 fork 一致；以下为当前上游示例）：
+**从 GitHub（未克隆）**
 
 ```bash
-npx skills add https://github.com/xiongxianzhu/xskills -g -y   # 安装 skills/ 下全部技能
-
-npx skills add xiongxianzhu/xskills --list                     # 仅列出可安装技能
-npx skills add xiongxianzhu/xskills --skill api-docs -g -y     # 只安装某一个
+npx skills add xiongxianzhu/xskills -g -y
+npx skills add xiongxianzhu/xskills --list
+npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 ```
 
-短名与 HTTPS URL 等价；仅安装单个技能时用 `--skill <名>`。安装后可用 `npx skills list -g` 查看本地所有已安装的全局技能，确认是否已就绪。
+安装后执行 `npx skills list -g` 确认全局技能已就绪。
 
-## 推荐
+## 本仓库技能
 
-- [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md)：高完成度前端界面
-- [find-skills](https://github.com/vercel-labs/skills)：在对话里发现、安装技能，配合 `npx skills find` / `add`
-- [git-commit](https://skills.sh/github/awesome-copilot/git-commit)：撰写规范 Git 提交信息（约定式提交 / Conventional Commits）
-- [prd](https://skills.sh/github/awesome-copilot/prd)：撰写规范化 PRD / 产品需求文档（本仓库同名能力为 [prd-creator](./skills/prd-creator/SKILL.md)）
-- [to-prd](https://skills.sh/mattpocock/skills/to-prd)：基于当前对话与代码库理解合成 PRD（模块拆分、实现/测试决策、Out of Scope；与上文「prd」的访谈式流程互补）
-- [stitch::extract-design-md](https://skills.sh/google-labs-code/stitch-skills/stitch::extract-design-md)（来源 [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)）：从 React/Vue/Tailwind 等**前端源码**反推 **DESIGN.md** 设计系统（色板、字体、间距、组件模式），无需先跑起来；与同仓库基于渲染 HTML 的 `design-md` 互补，便于 Stitch 工作流
-- [git-branch-naming](https://github.com/laurigates/claude-plugins/tree/main/git-plugin/skills/git-branch-naming)：分支命名
+| 技能 | 说明 |
+| --- | --- |
+| [`api-docs`](./skills/api-docs/SKILL.md) | 按仓库规范编写 API 文档 |
+| [`prd-creator`](./skills/prd-creator/SKILL.md) | 编写 PRD / 需求文档 |
+| [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 2.1 Flash 文生图 / 图生图 |
+| [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 |
 
-cli安装:
+## 推荐技能
 
-```sh
+| 技能 | 说明 |
+| --- | --- |
+| [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | 高完成度前端界面 |
+| [find-skills](https://github.com/vercel-labs/skills) | 对话中发现、安装技能 |
+| [git-commit](https://skills.sh/github/awesome-copilot/git-commit) | 约定式提交（Conventional Commits） |
+| [prd](https://skills.sh/github/awesome-copilot/prd) | 规范化 PRD（本仓库同名：[prd-creator](./skills/prd-creator/SKILL.md)） |
+| [to-prd](https://skills.sh/mattpocock/skills/to-prd) | 基于对话与代码库合成 PRD |
+| [stitch::extract-design-md](https://skills.sh/google-labs-code/stitch-skills/stitch::extract-design-md) | 从前端源码反推 DESIGN.md |
+| [git-branch-naming](https://github.com/laurigates/claude-plugins/tree/main/git-plugin/skills/git-branch-naming) | 分支命名规范 |
+| [design-taste-frontend](https://skills.sh/Leonxlnx/taste-skill/design-taste-frontend) | 反模板化落地页 / 作品集，规避 AI 审美痕迹 |
+| [skill-creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) | 创建、改进 Agent Skill，含评测与描述优化 |
+| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | Vercel 出品 React / Next.js 性能优化（70+ 规则） |
+| [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | 按 Web Interface Guidelines 审查 UI（无障碍、UX、性能） |
+| [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | 调用 OpenAI / Gemini 生图（自动检测 API Key） |
+
+**批量安装**
+
+```bash
 npx skills add anthropics/skills --skill frontend-design -g -y
 npx skills add vercel-labs/skills --skill find-skills -g -y
 npx skills add github/awesome-copilot --skill git-commit -g -y
@@ -110,9 +123,8 @@ npx skills add anthropics/skills --skill skill-creator -g -y
 npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices -g -y
 npx skills add vercel-labs/agent-skills --skill web-design-guidelines -g -y
 npx skills add github/awesome-copilot --skill generate-image -g -y
-npx skills add github/awesome-copilot --skill git-commit -g -y
 ```
 
 ## 许可
 
-见 [LICENSE](./LICENSE)。
+[MIT License](./LICENSE)
