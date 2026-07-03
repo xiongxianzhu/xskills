@@ -67,7 +67,7 @@
 | 场景 | 命令 |
 | --- | --- |
 | 列出本仓库可装技能（推荐，无需克隆） | `npx skills add xiongxianzhu/xskills --list` |
-| 一键安装全部（推荐） | `npx skills add https://github.com/xiongxianzhu/xskills -g -y` |
+| 一键安装全部（推荐） | `npx skills add xiongxianzhu/xskills -g -y` |
 | 已克隆，安装全部 | `cd xskills && npx skills add . -g -y` |
 | 已克隆，列出可装技能 | `npx skills add . --list` |
 | 只装某一个 | `npx skills add . --skill dingtalk-log -g -y` |
