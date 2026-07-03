@@ -1,8 +1,8 @@
 # xskills
 
-> 个人维护的 Agent Skills 集合：当前含 5 个技能（api-docs、prd-creator、agnes-image、agnes-video、dingtalk-log），位于 `skills/` 目录，配合 `npx skills` CLI 安装到 Cursor、Claude Code 等智能体全局技能目录。
+> 个人维护的 Agent Skills 与提示词集合：5 个 Skill 位于 `skills/`，按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
 
-本仓库**不含应用业务代码**，核心是可复用的 **`SKILL.md` 入口**与 **references/** 规范/示例。入口说明、CLI 用法、本仓库技能一览与外部推荐技能见 [README](README.md)。
+本仓库**不含应用业务代码**。Skill 以 **`SKILL.md` 入口**与 **references/** 为主；提示词为普通 Markdown，手动复制使用。入口说明见 [README](README.md)。
 
 ## Documentation
 
@@ -12,6 +12,16 @@
 - [agnes-image Skill 入口](skills/agnes-image/SKILL.md): Agnes Image 2.1 Flash 文生图 / 图生图技能的用法与约束
 - [agnes-video Skill 入口](skills/agnes-video/SKILL.md): Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧视频技能（异步任务式）的用法与约束
 - [dingtalk-log Skill 入口](skills/dingtalk-log/SKILL.md): 钉钉工作日志生成；口语任务润色为正式编号列表
+- [提示词库索引](prompts/README.md): 按需手动使用的 Prompt 分类与新增说明
+
+## Prompts
+
+- [提示词格式模板](prompts/_template.md): 新建提示词时的 frontmatter 与正文结构
+- [coding/](prompts/coding/): 编码相关提示词（代码审查、重构、调试等）
+- [writing/](prompts/writing/): 写作相关提示词（文档、博客、汇报等）
+- [design/](prompts/design/): 设计相关提示词（UI 评审、设计系统等）
+- [meta/clarify-before-execute.md](prompts/meta/clarify-before-execute.md): 先提问澄清需求，确认后再执行
+- [meta/](prompts/meta/): 元提示（提示词优化、角色设定、执行前澄清等）
 
 ## Specifications
 

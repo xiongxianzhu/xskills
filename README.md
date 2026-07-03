@@ -2,7 +2,7 @@
 
 # xskills
 
-跨智能体共用的 **Agent Skills** 集合
+跨智能体共用的 **Agent Skills** 与**提示词**集合
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
@@ -20,7 +20,7 @@
 
 ## 目录结构
 
-每个技能位于 `skills/<技能名>/`，按需包含：
+**Skills**（`skills/`）— 可 `npx skills add` 安装：
 
 | 路径 | 说明 |
 | --- | --- |
@@ -28,6 +28,14 @@
 | `scripts/` | 可执行脚本 / CLI |
 | `references/` | 长文档、附录、细则 |
 | `assets/` | 模板、示例数据等静态资源 |
+
+**提示词**（`prompts/`）— 手动复制或 `@` 引用，不安装：
+
+| 路径 | 说明 |
+| --- | --- |
+| `README.md` | 分类索引与新增说明 |
+| `_template.md` | 新建提示词的格式模板 |
+| `coding/` · `writing/` · `design/` · `meta/` | 按用途分类存放 |
 
 全局安装目录通常为 `~/.agents/skills/`（配合 `npx skills add -g`；个别智能体路径以其文档为准）。
 
@@ -83,6 +91,19 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 | [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 2.1 Flash 文生图 / 图生图 | [API](./skills/agnes-image/references/api.md) |
 | [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
 | [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [使用说明](./skills/dingtalk-log/references/usage.md) |
+
+## 提示词库
+
+按需手动使用的 Prompt，见 [`prompts/`](./prompts/README.md)。复制粘贴或 `@prompts/...` 引用即可，**无需** `npx skills add`。
+
+| 分类 | 路径 |
+| --- | --- |
+| 编码 | [`prompts/coding/`](./prompts/coding/) |
+| 写作 | [`prompts/writing/`](./prompts/writing/) |
+| 设计 | [`prompts/design/`](./prompts/design/) |
+| 元提示 | [`prompts/meta/`](./prompts/meta/) |
+
+新增提示词：复制 [`prompts/_template.md`](./prompts/_template.md) 到对应分类，并在 [`prompts/README.md`](./prompts/README.md) 索引中登记。
 
 ## 推荐技能
 
