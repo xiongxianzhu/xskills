@@ -101,6 +101,7 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 | [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | 按 Web Interface Guidelines 审查 UI（无障碍、UX、性能） |
 | [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | 调用 OpenAI / Gemini 生图（自动检测 API Key） |
 | [technical-writer](https://github.com/shubhamsaboo/awesome-llm-apps) | 技术文档写作（README、API 文档、教程、变更说明） |
+| [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | Karpathy 式编码准则：避免过度设计，精准改动，明确验收标准 |
 
 **批量安装**
 
@@ -120,6 +121,7 @@ npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices -g -
 npx skills add vercel-labs/agent-skills --skill web-design-guidelines -g -y
 npx skills add github/awesome-copilot --skill generate-image -g -y
 npx skills add shubhamsaboo/awesome-llm-apps --skill technical-writer -g -y
+npx skills add multica-ai/andrej-karpathy-skills --skill karpathy-guidelines -g -y
 ```
 
 ## 许可

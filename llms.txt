@@ -1,12 +1,12 @@
 # xskills
 
-> 个人维护的 Agent Skills 集合：`skills/` 下各技能遵循通用 SKILL 约定，配合 `npx skills` CLI 安装到 Cursor、Claude Code 等智能体可用的全局技能目录。
+> 个人维护的 Agent Skills 集合：当前含 5 个技能（api-docs、prd-creator、agnes-image、agnes-video、dingtalk-log），位于 `skills/` 目录，配合 `npx skills` CLI 安装到 Cursor、Claude Code 等智能体全局技能目录。
 
-本仓库**不含应用业务代码**，核心是可复用的 **`SKILL.md` 入口**与 **references/** 规范/示例；入口说明、CLI 用法与推荐阅读见根目录 README。
+本仓库**不含应用业务代码**，核心是可复用的 **`SKILL.md` 入口**与 **references/** 规范/示例。入口说明、CLI 用法、本仓库技能一览与外部推荐技能见 [README](README.md)。
 
 ## Documentation
 
-- [README](README.md): 仓库说明、Skill 目录约定、`npx skills` 命令摘要、安装本仓库技能、`LICENSE` 入口
+- [README](README.md): 仓库说明、Skill 目录约定、`npx skills` 命令摘要、安装方式、本仓库 5 个技能与外部推荐技能、`LICENSE` 入口
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
 - [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
 - [agnes-image Skill 入口](skills/agnes-image/SKILL.md): Agnes Image 2.1 Flash 文生图 / 图生图技能的用法与约束
@@ -25,12 +25,15 @@
 
 - [API 文档示例（虚构图书管理系统）](skills/api-docs/references/examples.md): 与 specification 对齐的完整示例
 - [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 简化版 / 标准版示例
+- [Agnes Image 生成脚本](skills/agnes-image/scripts/generate.py): 文生图 / 图生图 CLI，SKILL 推荐优先调用
+- [Agnes Video 生成脚本](skills/agnes-video/scripts/generate.py): 视频生成 CLI，SKILL 推荐优先调用
 
 ## Configuration
 
-- [Git 工作流约定（分支与 Conventional Commits）](.cursor/rules/git-workflow.mdc): 本仓库协作时建议遵循的提交与分支命名
+- [Git 工作流约定（分支与 Conventional Commits）](.cursor/rules/git-workflow.mdc): 本仓库协作时建议遵循的分支命名与提交类型
+- [Git 提交信息规则（简体中文）](.cursor/rules/git-commit-message.mdc): Cursor Git 面板生成提交信息时使用简体中文 Conventional Commits
 - [.gitignore](.gitignore): 版本库忽略规则
 
 ## Optional
 
-- [LICENSE](LICENSE): 开源许可正文
+- [LICENSE](LICENSE): 开源许可正文（MIT）
