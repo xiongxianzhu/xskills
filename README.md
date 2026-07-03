@@ -25,6 +25,7 @@
 | 路径 | 说明 |
 | --- | --- |
 | `SKILL.md` | 入口；YAML 含 `name`、`description`，正文为步骤与约束 |
+| `_template/` | 新建 Skill 的复制模板（`metadata.internal: true`，一键安装时跳过） |
 | `scripts/` | 可执行脚本 / CLI |
 | `references/` | 长文档、附录、细则 |
 | `assets/` | 模板、示例数据等静态资源 |
@@ -92,9 +93,11 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 | [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
 | [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [使用说明](./skills/dingtalk-log/references/usage.md) |
 
+新建 Skill 可复制 [`skills/_template/`](./skills/_template/SKILL.md)（含 Gate、停止条件；已设 `metadata.internal: true`，不会被 `npx skills add` 安装）。
+
 ## 提示词库
 
-按需手动使用的 Prompt，见 [`prompts/`](./prompts/README.md)。复制粘贴或 `@prompts/...` 引用即可，**无需** `npx skills add`。
+`prompts/` 管**单次对话行为**（复制或 `@` 引用）；`skills/` 管**可重复工作流**，是 Loop 的雏形（验收 + 停止条件 + 可选 STATE）。二者分工见 [Loop 就绪度自检](./prompts/meta/loop-readiness-check.md)。
 
 | 分类 | 路径 |
 | --- | --- |

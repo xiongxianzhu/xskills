@@ -30,3 +30,7 @@ variables: [VARIABLE_1, VARIABLE_2]
 **期望输出：**
 
 （描述理想结果，便于日后调优）
+
+## 升级路径（可选）
+
+若任务**重复发生**且**可自动验收**，不必无限加长 Prompt。先做 [Loop 就绪度自检](./meta/loop-readiness-check.md)；通过后复制 [skills/_template/SKILL.md](../skills/_template/SKILL.md) 做成 Skill，并写上 Gate 与停止条件。

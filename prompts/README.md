@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 使用方式 | 复制粘贴或 `@` 引用文件 | `npx skills add` 安装后 Agent 自动遵循 |
 | 格式 | 普通 Markdown | `SKILL.md` + YAML 前言 |
-| 适用 | 单段或多段可复用 Prompt | 多步骤工作流、脚本、强约束 |
+| 适用 | 单段 Prompt，单次对话行为 | 多步工作流；可重复任务的 Loop 雏形 |
 
 ## 目录
 
@@ -15,7 +15,7 @@
 | 编码 | [`coding/`](./coding/) | 代码审查、重构、调试、架构讨论 |
 | 写作 | [`writing/`](./writing/) | 技术博客、文档、邮件、汇报 |
 | 设计 | [`design/`](./design/) | UI 评审、设计系统、视觉方向 |
-| 元提示 | [`meta/`](./meta/) | 提示词优化、角色设定、**执行前澄清**、输出格式约束 |
+| 元提示 | [`meta/`](./meta/) | 提示词优化、**Loop 就绪度**、执行前澄清、输出格式约束 |
 
 ## 新增提示词
 
@@ -29,6 +29,7 @@
 | 文件 | 说明 |
 | --- | --- |
 | [`meta/clarify-before-execute.md`](./meta/clarify-before-execute.md) | 先提问澄清需求，确认后再执行 |
+| [`meta/loop-readiness-check.md`](./meta/loop-readiness-check.md) | 四条件自检：该用 Prompt、Skill 还是 Loop |
 
 ## 何时做成 Skill？
 

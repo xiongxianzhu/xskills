@@ -21,7 +21,9 @@
 - [writing/](prompts/writing/): 写作相关提示词（文档、博客、汇报等）
 - [design/](prompts/design/): 设计相关提示词（UI 评审、设计系统等）
 - [meta/clarify-before-execute.md](prompts/meta/clarify-before-execute.md): 先提问澄清需求，确认后再执行
-- [meta/](prompts/meta/): 元提示（提示词优化、角色设定、执行前澄清等）
+- [meta/loop-readiness-check.md](prompts/meta/loop-readiness-check.md): 四条件自检，判断用 Prompt、Skill 还是 Loop
+- [meta/](prompts/meta/): 元提示（Loop 就绪度、执行前澄清等）
+- [Skill 模板](skills/_template/SKILL.md): 新建 Skill 时复制；含 Gate、停止条件（`metadata.internal: true`，一键安装时跳过）
 
 ## Specifications
 
