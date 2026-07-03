@@ -6,7 +6,7 @@
 
 ## Documentation
 
-- [README](README.md): 仓库说明、Skill 目录约定、`npx skills` 命令摘要、安装方式、本仓库 5 个技能与外部推荐技能、`LICENSE` 入口
+- [README](README.md): 仓库说明、Skill 目录约定、`npx skills add xiongxianzhu/xskills --list` 列出可装技能、安装方式、本仓库 5 个技能与外部推荐技能、`LICENSE` 入口
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
 - [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
 - [agnes-image Skill 入口](skills/agnes-image/SKILL.md): Agnes Image 2.1 Flash 文生图 / 图生图技能的用法与约束

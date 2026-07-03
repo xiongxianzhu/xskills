@@ -66,6 +66,7 @@
 
 | 场景 | 命令 |
 | --- | --- |
+| 列出本仓库可装技能（推荐，无需克隆） | `npx skills add xiongxianzhu/xskills --list` |
 | 一键安装全部（推荐） | `npx skills add https://github.com/xiongxianzhu/xskills -g -y` |
 | 已克隆，安装全部 | `cd xskills && npx skills add . -g -y` |
 | 已克隆，列出可装技能 | `npx skills add . --list` |
@@ -75,6 +76,7 @@
 未克隆时，短名与 HTTPS URL 等价：
 
 ```bash
+npx skills add xiongxianzhu/xskills --list              # 列出本仓库全部可安装技能
 npx skills add xiongxianzhu/xskills -g -y
 npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 ```
