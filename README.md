@@ -67,6 +67,7 @@ npx skills list -g
 | 技能 | 说明 |
 | --- | --- |
 | [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | 高完成度前端界面 |
+| [shadcn](https://ui.shadcn.com/docs/skills) | shadcn/ui 组件发现、安装与组合；读取 `components.json` |
 | [find-skills](https://github.com/vercel-labs/skills) | 对话中发现、安装技能 |
 | [git-commit](https://skills.sh/github/awesome-copilot/git-commit) | 约定式提交；说 commit / push 触发提交与推送 |
 | [prd](https://skills.sh/github/awesome-copilot/prd) | 规范化 PRD（本仓库：[prd-creator](./skills/prd-creator/SKILL.md)） |
@@ -84,6 +85,7 @@ npx skills list -g
 
 ```bash
 npx skills add anthropics/skills --skill frontend-design -g -y
+npx skills add shadcn/ui --skill shadcn -g -y
 npx skills add vercel-labs/skills --skill find-skills -g -y
 npx skills add github/awesome-copilot --skill git-commit -g -y
 npx skills add github/awesome-copilot --skill prd -g -y
