@@ -16,99 +16,51 @@
 
 ---
 
-> **Agent / LLM**：请先阅读 [`llms.txt`](./llms.txt)（[llmstxt.org](https://llmstxt.org/) 格式），快速对齐本仓库文档导航与技能要点。
+为 Cursor、Claude Code 等智能体提供可安装技能（[`skills/`](./skills/)）与可复制提示词（[`prompts/`](./prompts/)）。技能用 [`npx skills`](https://www.npmjs.com/package/skills) 安装；提示词复制或 `@` 引用即可。
 
-## 目录结构
+> **Agent / LLM**：先读 [`llms.txt`](./llms.txt) 对齐文档导航。
 
-**Skills**（`skills/`）— 可 `npx skills add` 安装：
-
-| 路径 | 说明 |
-| --- | --- |
-| `SKILL.md` | 入口；YAML 含 `name`、`description`，正文为步骤与约束 |
-| `_template/` | 新建 Skill 的复制模板（`metadata.internal: true`，一键安装时跳过） |
-| `scripts/` | 可执行脚本 / CLI |
-| `references/` | 长文档、附录、细则 |
-| `assets/` | 模板、示例数据等静态资源 |
-
-**提示词**（`prompts/`）— 手动复制或 `@` 引用，不安装：
-
-| 路径 | 说明 |
-| --- | --- |
-| `README.md` | 分类索引与新增说明 |
-| `_template.md` | 新建提示词的格式模板 |
-| `coding/` · `writing/` · `design/` · `meta/` | 按用途分类存放 |
-
-全局安装目录通常为 `~/.agents/skills/`（配合 `npx skills add -g`；个别智能体路径以其文档为准）。
-
-## CLI
-
-包名 **`skills`**（非 `skill`），通过 npx 免安装调用。详见 [npm: skills](https://www.npmjs.com/package/skills)。
-
-| 命令 | 说明 |
-| --- | --- |
-| `npx skills add <源>` | 安装到已检测到的智能体目录 |
-| `npx skills add <源> --list` | 列出源内可用技能 |
-| `npx skills add <源> --skill <名> -a <智能体> -g -y` | 指定技能、智能体、全局、跳过确认 |
-| `npx skills init [名称]` | 生成 `SKILL.md` 模板 |
-| `npx skills list` / `ls` | 查看已安装技能 |
-| `npx skills list -g` | 查看本地所有已安装的全局技能 |
-| `npx skills find [关键词]` | 搜索 / 交互查找 |
-| `npx skills update [技能名…]` | 更新 |
-| `npx skills remove [技能名…]` / `rm` | 卸载 |
-
-常用选项：`-g` 全局安装 · `-a` 指定智能体（如 `cursor`） · `--copy` 复制而非符号链接。
-
-规范与发现：[skills.sh](https://skills.sh) · [Agent Skills 规范](https://agentskills.io)
-
-## 安装
-
-`npx skills add` 扫描仓库中的 `skills/` 目录；源地址为**仓库根**（非 `skills/` 子路径）。不加 `--skill` 时安装全部技能。
-
-| 场景 | 命令 |
-| --- | --- |
-| 列出本仓库可装技能（推荐，无需克隆） | `npx skills add xiongxianzhu/xskills --list` |
-| 一键安装全部（推荐） | `npx skills add xiongxianzhu/xskills -g -y` |
-| 已克隆，安装全部 | `cd xskills && npx skills add . -g -y` |
-| 已克隆，列出可装技能 | `npx skills add . --list` |
-| 只装某一个 | `npx skills add . --skill dingtalk-log -g -y` |
-| 指定 Agent | `npx skills add . -a cursor -g -y` |
-
-未克隆时，短名与 HTTPS URL 等价：
+## 快速开始
 
 ```bash
-npx skills add xiongxianzhu/xskills --list              # 列出本仓库全部可安装技能
-npx skills add xiongxianzhu/xskills -g -y
+npx skills add xiongxianzhu/xskills --list
 npx skills add xiongxianzhu/xskills --skill api-docs -g -y
+npx skills list -g
 ```
 
-安装后执行 `npx skills list -g` 确认全局技能已就绪。
+安装后在对话中说「按 api-docs 规范写接口文档」即可触发技能。更多安装场景见下节。
 
 ## 本仓库技能
 
-文档写作、需求整理、多媒体生成与日常办公辅助：
-
 | 技能 | 说明 | 文档 |
 | --- | --- | --- |
-| [`api-docs`](./skills/api-docs/SKILL.md) | 按仓库规范编写 API 文档 | [规范](./skills/api-docs/references/specification.md) |
+| [`api-docs`](./skills/api-docs/SKILL.md) | 按规范编写 API 文档 | [规范](./skills/api-docs/references/specification.md) |
 | [`prd-creator`](./skills/prd-creator/SKILL.md) | 编写 PRD / 需求文档 | [模板](./skills/prd-creator/references/template.md) |
-| [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 2.1 Flash 文生图 / 图生图 | [API](./skills/agnes-image/references/api.md) |
-| [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
-| [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [使用说明](./skills/dingtalk-log/references/usage.md) |
+| [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 文生图 / 图生图 | [API](./skills/agnes-image/references/api.md) |
+| [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes Video 文生 / 图生 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
+| [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [说明](./skills/dingtalk-log/references/usage.md) |
 
-新建 Skill 可复制 [`skills/_template/`](./skills/_template/SKILL.md)（含 Gate、停止条件；已设 `metadata.internal: true`，不会被 `npx skills add` 安装）。
+新建 Skill：复制 [`skills/_template/`](./skills/_template/SKILL.md)（`metadata.internal: true`，不会被一键安装）。
 
-## 提示词库
+## 提示词
 
-`prompts/` 管**单次对话行为**（复制或 `@` 引用）；`skills/` 管**可重复工作流**，是 Loop 的雏形（验收 + 停止条件 + 可选 STATE）。二者分工见 [Loop 就绪度自检](./prompts/meta/loop-readiness-check.md)。
+单次对话行为放 [`prompts/`](./prompts/)，可重复工作流放 `skills/`。索引与新增方式见 [`prompts/README.md`](./prompts/README.md)；Prompt / Skill / Loop 分工见 [Loop 就绪度自检](./prompts/meta/loop-readiness-check.md)。
 
-| 分类 | 路径 |
+## 安装
+
+源地址为**仓库根** `xiongxianzhu/xskills`（不是 `skills/` 子路径）。CLI 包名是 **`skills`**（不是 `skill`）。
+
+| 场景 | 命令 |
 | --- | --- |
-| 编码 | [`prompts/coding/`](./prompts/coding/) |
-| 写作 | [`prompts/writing/`](./prompts/writing/) |
-| 设计 | [`prompts/design/`](./prompts/design/) |
-| 元提示 | [`prompts/meta/`](./prompts/meta/) |
+| 列出可装技能 | `npx skills add xiongxianzhu/xskills --list` |
+| 安装全部 | `npx skills add xiongxianzhu/xskills -g -y` |
+| 安装单个 | `npx skills add xiongxianzhu/xskills --skill api-docs -g -y` |
+| 指定 Cursor | `… --skill api-docs -a cursor -g -y` |
+| 本地已克隆 | `npx skills add . -g -y` |
 
-新增提示词：复制 [`prompts/_template.md`](./prompts/_template.md) 到对应分类，并在 [`prompts/README.md`](./prompts/README.md) 索引中登记。
+常用选项：`-g` 全局 · `-y` 跳过确认 · `-a` 指定智能体 · `--skill` 指定技能 · `--copy` 复制而非符号链接。
+
+其他命令：`list` / `find` / `update` / `remove` / `init`。完整说明见 [npm: skills](https://www.npmjs.com/package/skills)、[skills.sh](https://skills.sh)、[Agent Skills 规范](https://agentskills.io)。
 
 ## 推荐技能
 
@@ -116,20 +68,19 @@ npx skills add xiongxianzhu/xskills --skill api-docs -g -y
 | --- | --- |
 | [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | 高完成度前端界面 |
 | [find-skills](https://github.com/vercel-labs/skills) | 对话中发现、安装技能 |
-| [git-commit](https://skills.sh/github/awesome-copilot/git-commit) | 约定式提交（Conventional Commits） |
-| [prd](https://skills.sh/github/awesome-copilot/prd) | 规范化 PRD（本仓库同名：[prd-creator](./skills/prd-creator/SKILL.md)） |
+| [git-commit](https://skills.sh/github/awesome-copilot/git-commit) | 约定式提交；说 commit / push 触发提交与推送 |
+| [prd](https://skills.sh/github/awesome-copilot/prd) | 规范化 PRD（本仓库：[prd-creator](./skills/prd-creator/SKILL.md)） |
 | [to-prd](https://skills.sh/mattpocock/skills/to-prd) | 基于对话与代码库合成 PRD |
 | [stitch::extract-design-md](https://skills.sh/google-labs-code/stitch-skills/stitch::extract-design-md) | 从前端源码反推 DESIGN.md |
 | [git-branch-naming](https://github.com/laurigates/claude-plugins/tree/main/git-plugin/skills/git-branch-naming) | 分支命名规范 |
-| [design-taste-frontend](https://skills.sh/Leonxlnx/taste-skill/design-taste-frontend) | 反模板化落地页 / 作品集，规避 AI 审美痕迹 |
-| [skill-creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) | 创建、改进 Agent Skill，含评测与描述优化 |
-| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | Vercel 出品 React / Next.js 性能优化（70+ 规则） |
-| [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | 按 Web Interface Guidelines 审查 UI（无障碍、UX、性能） |
-| [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | 调用 OpenAI / Gemini 生图（自动检测 API Key） |
-| [technical-writer](https://github.com/shubhamsaboo/awesome-llm-apps) | 技术文档写作（README、API 文档、教程、变更说明） |
-| [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | Karpathy 式编码准则：避免过度设计，精准改动，明确验收标准 |
-
-**批量安装**
+| [design-taste-frontend](https://skills.sh/Leonxlnx/taste-skill/design-taste-frontend) | 反模板化落地页 / 作品集 |
+| [skill-creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) | 创建与改进 Agent Skill |
+| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | React / Next.js 性能优化 |
+| [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | Web Interface Guidelines 审查 |
+| [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | OpenAI / Gemini 生图 |
+| [technical-writer](https://github.com/shubhamsaboo/awesome-llm-apps) | 技术文档写作 |
+| [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | 避免过度设计、精准改动 |
+| [brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | 写代码前先澄清需求、对比方案、确认设计（Superpowers 入口） |
 
 ```bash
 npx skills add anthropics/skills --skill frontend-design -g -y
@@ -148,7 +99,27 @@ npx skills add vercel-labs/agent-skills --skill web-design-guidelines -g -y
 npx skills add github/awesome-copilot --skill generate-image -g -y
 npx skills add shubhamsaboo/awesome-llm-apps --skill technical-writer -g -y
 npx skills add multica-ai/andrej-karpathy-skills --skill karpathy-guidelines -g -y
+npx skills add obra/superpowers --skill brainstorming -g -y
 ```
+
+## 故障排查
+
+| 现象 | 原因 | 处理 |
+| --- | --- | --- |
+| `No skills found` | 源路径错误或 `SKILL.md` 前言无效 | 用 `xiongxianzhu/xskills`，勿用 `…/skills` |
+| 安装后未生效 | 未全局安装或智能体路径不对 | `npx skills list -g`；加 `-a cursor`；重启 IDE |
+| 私有仓库装不上 | CLI 默认克隆公开仓库 | 设为公开，或 `git clone` 后 `npx skills add . -g -y` |
+| 权限错误 | 无法写入 `~/.cursor/skills/` 等 | 检查目录权限，或去掉 `-g` 做项目级安装 |
+
+## 发布
+
+推送到 GitHub 即发布，无需 npm：
+
+```bash
+git push origin main
+```
+
+已安装用户更新：`npx skills update api-docs`。
 
 ## 许可
 
