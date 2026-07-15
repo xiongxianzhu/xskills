@@ -82,6 +82,7 @@ npx skills list -g
 | [technical-writer](https://github.com/shubhamsaboo/awesome-llm-apps) | 技术文档写作 |
 | [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | 避免过度设计、精准改动 |
 | [brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | 写代码前先澄清需求、对比方案、确认设计（Superpowers 入口） |
+| [hatch-pet](https://github.com/openai/skills/blob/main/skills/.curated/hatch-pet/SKILL.md) | 创建、修复、校验并打包 Codex 动画宠物与精灵图 |
 
 ```bash
 npx skills add anthropics/skills --skill frontend-design -g -y
@@ -102,6 +103,7 @@ npx skills add github/awesome-copilot --skill generate-image -g -y
 npx skills add shubhamsaboo/awesome-llm-apps --skill technical-writer -g -y
 npx skills add multica-ai/andrej-karpathy-skills --skill karpathy-guidelines -g -y
 npx skills add obra/superpowers --skill brainstorming -g -y
+npx skills add openai/skills --skill hatch-pet -g -y
 ```
 
 ## 故障排查
