@@ -25,13 +25,22 @@ def build_project(root: Path, *, legacy: bool = False, body: str = VALID_BODY) -
         "04_创作进度.md",
     ]
     if not legacy:
-        names.append("05_追读账本.md")
+        names.extend(("05_追读账本.md", "06_场景设定.md", "07_道具装备设定.md"))
     for name in names:
         write(root / name, f"# {name[:-3]}\n\n有效内容。\n")
-    write(root / "正文" / "第001章_开始.md", f"# 第001章 开始\n\n{body}\n")
+    chapter_number = "001" if legacy else "0001"
+    write(
+        root / "正文" / f"第{chapter_number}章_开始.md",
+        f"# 第{chapter_number}章 开始\n\n{body}\n",
+    )
+    if not legacy:
+        write(
+            root / "漫剧改编" / "00_视觉资产总表.md",
+            "# 视觉资产总表\n\n人物、场景和关键物件视觉信息。\n",
+        )
     write(
         root / "漫剧改编" / "第001集_改编资料.md",
-        "# 第001集 改编资料\n\n- 对应正文：第001章\n- 本集目标：确认线索\n",
+        f"# 第001集 改编资料\n\n- 对应正文：第{chapter_number}章\n- 本集目标：确认线索\n",
     )
 
 
@@ -49,6 +58,30 @@ class ValidateProjectTests(unittest.TestCase):
             (root / "05_追读账本.md").unlink()
             errors = validate_project(root, 1500, 2500, legacy=False)
             self.assertTrue(any("05_追读账本.md" in error for error in errors))
+
+    def test_new_project_requires_scene_setting(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            (root / "06_场景设定.md").unlink()
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("06_场景设定.md" in error for error in errors))
+
+    def test_new_project_requires_prop_setting(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            (root / "07_道具装备设定.md").unlink()
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("07_道具装备设定.md" in error for error in errors))
+
+    def test_new_project_requires_visual_asset_table(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            (root / "漫剧改编" / "00_视觉资产总表.md").unlink()
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("视觉资产总表" in error for error in errors))
 
     def test_legacy_mode_accepts_old_file_names(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -74,7 +107,44 @@ class ValidateProjectTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             build_project(root)
-            write(root / "正文" / "第003章_跳号.md", f"# 第003章 跳号\n\n{VALID_BODY}\n")
+            write(root / "正文" / "第0003章_跳号.md", f"# 第0003章 跳号\n\n{VALID_BODY}\n")
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("章节编号不连续" in error for error in errors))
+
+    def test_new_project_rejects_three_digit_chapter_name(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            old_path = root / "正文" / "第0001章_开始.md"
+            new_path = root / "正文" / "第001章_开始.md"
+            old_path.rename(new_path)
+            write(new_path, f"# 第001章 开始\n\n{VALID_BODY}\n")
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("四位数章节文件名" in error for error in errors))
+
+    def test_new_project_rejects_three_digit_chapter_reference(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            adaptation = root / "漫剧改编" / "第001集_改编资料.md"
+            write(adaptation, "# 第001集 改编资料\n\n- 对应正文：第001章\n")
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("非四位数章节引用" in error for error in errors))
+
+    def test_chapter_heading_must_match_filename(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            chapter = root / "正文" / "第0001章_开始.md"
+            write(chapter, f"# 第0002章 开始\n\n{VALID_BODY}\n")
+            errors = validate_project(root, 1500, 2500, legacy=False)
+            self.assertTrue(any("与正文标题编号" in error for error in errors))
+
+    def test_duplicate_chapter_number_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_project(root)
+            write(root / "正文" / "第0001章_重复.md", f"# 第0001章 重复\n\n{VALID_BODY}\n")
             errors = validate_project(root, 1500, 2500, legacy=False)
             self.assertTrue(any("章节编号不连续" in error for error in errors))
 

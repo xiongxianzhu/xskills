@@ -34,7 +34,7 @@ npx skills add xiongxianzhu/xskills --skill <技能名> -g -y
 
 | 技能 | 说明 |
 | --- | --- |
-| [`ai-novel-writer`](./ai-novel-writer/SKILL.md) | 根据动态榜单与题材趋势推荐男频、女频或创新短故事主题，并创作、续写、诊断和修改追读优先的网文，生成独立漫剧交接资料 |
+| [`ai-novel-writer`](./ai-novel-writer/SKILL.md) | 根据动态趋势选题并创作、续写和诊断追读优先的网文，管理人物特征、场景、道具装备与漫剧固定视觉资产 |
 | [`novel-to-script`](./novel-to-script/SKILL.md) | 把小说文本改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注 |
 | [`manju-short-video-polish`](./manju-short-video-polish/SKILL.md) | 将小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播） |
 
