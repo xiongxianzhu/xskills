@@ -34,7 +34,7 @@ npx skills add xiongxianzhu/xskills --skill <技能名> -g -y
 
 | 技能 | 说明 |
 | --- | --- |
-| [`ai-novel-writer`](./ai-novel-writer/SKILL.md) | 创作、续写、修改适合改编为 AI 漫剧的中文小说，保存作品/角色/大纲/章节与独立漫剧改编资料 |
+| [`ai-novel-writer`](./ai-novel-writer/SKILL.md) | 创作、续写、诊断和修改追读优先的番茄/红果式男女频网文，并生成独立漫剧交接资料 |
 | [`novel-to-script`](./novel-to-script/SKILL.md) | 把小说文本改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注 |
 | [`manju-short-video-polish`](./manju-short-video-polish/SKILL.md) | 将小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播） |
 
