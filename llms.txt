@@ -17,7 +17,7 @@
 - [cocos-mini-game Skill 入口](skills/cocos-mini-game/SKILL.md): 从主题调研、玩法提案、PRD 和任务规划开始，直接实施 Cocos Creator 3.8+ 微信/抖音双端 2D IAA 小游戏
 - [write-wechat-articles Skill 入口](skills/write-wechat-articles/SKILL.md): 编写简洁的技术、AI 创作实践与提示词分享公众号文章，并生成可复制的 HTML 富文本预览
 - [docs-writer Skill 入口](skills/docs-writer/SKILL.md): 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构
-- [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 根据动态趋势选题并创作、续写和诊断追读优先的网文，管理人物特征、场景、道具装备与漫剧固定视觉资产
+- [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 根据动态趋势选题并创作、续写和诊断追读优先的网文，控制连续章节同构、知识说明感与叙事声纹，并管理漫剧固定视觉资产
 - [novel-to-script Skill 入口](skills/ai-drama/novel-to-script/SKILL.md): 小说改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注
 - [manju-short-video-polish Skill 入口](skills/ai-drama/manju-short-video-polish/SKILL.md): 小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播）
 - [industrial-storyboard Skill 入口](skills/ai-drama/industrial-storyboard/SKILL.md): 故事脚本转工业级电影分镜（机位/景别/运镜/光影/音效）
@@ -74,6 +74,7 @@
 - [公众号发布检查](skills/write-wechat-articles/references/quality-checklist.md): 技术正确性、简洁性、排版、图片与风险检查
 - [小说动态市场选题](skills/ai-drama/ai-novel-writer/references/market-positioning.md): 当前榜单检索、证据分级、赛道判断、三案评分与选题停止点
 - [小说人物场景与物件设定](skills/ai-drama/ai-novel-writer/references/character-scene-prop.md): 分层角色卡、人物特征证据、场景空间、道具武器状态与四位数章节规范
+- [小说叙事质感与反模式](skills/ai-drama/ai-novel-writer/references/narrative-authenticity.md): 叙事声纹、章节结构变奏、节奏波形、系统介入、知识戏剧化、数字与历史生活机制
 - [免费网文追读核心](skills/ai-drama/ai-novel-writer/references/retention-core.md): 书名简介、前 300 字、前三章、四层期待与单章兑现
 - [男频小说创作导向](skills/ai-drama/ai-novel-writer/references/male-oriented.md): 目标、反制、代价、成果转化与持续获得感
 - [女频小说创作导向](skills/ai-drama/ai-novel-writer/references/female-oriented.md): 处境、选择权、关系变化与具体情绪兑现
