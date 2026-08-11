@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-24-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
-[![Validate Skills](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml)
+[![Validate Skills](https://img.shields.io/github/actions/workflow/status/xiongxianzhu/xskills/validate-skills.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=Validate%20Skills)](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml)
 [![Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Stars&color=181717)](https://github.com/xiongxianzhu/xskills/stargazers)
 [![Forks](https://img.shields.io/github/forks/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Forks&color=181717)](https://github.com/xiongxianzhu/xskills/forks)
 
