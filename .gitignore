@@ -4,6 +4,7 @@ Thumbs.db
 
 # 编辑器与本地工具（按需保留团队共享的配置时可删除对应行）
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
