@@ -1,0 +1,37 @@
+name: Skill 问题报告
+description: 报告已有 Skill 的错误、遗漏或不符合预期的行为
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: 受影响的 Skill
+      placeholder: 例如 write-wechat-articles
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现方式
+      description: 请提供输入、执行过程和必要上下文，注意移除隐私与密钥。
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 使用环境
+      description: 可选。填写智能体、CLI 或相关工具版本。
+      placeholder: 例如 Codex Desktop、Claude Code

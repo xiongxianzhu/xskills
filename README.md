@@ -7,8 +7,9 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-23-F59E0B?style=for-the-badge)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-24-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
+[![Validate Skills](https://img.shields.io/github/actions/workflow/status/xiongxianzhu/xskills/validate-skills.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=Validate%20Skills)](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml)
 [![Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Stars&color=181717)](https://github.com/xiongxianzhu/xskills/stargazers)
 [![Forks](https://img.shields.io/github/forks/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Forks&color=181717)](https://github.com/xiongxianzhu/xskills/forks)
 
@@ -57,6 +58,10 @@ npx skills list -g
 | [`ai-music`](./skills/ai-music/README.md) | 2 | AI 音乐：Suno 作词与配器、MV 分镜与视频提示词 |
 
 新建 Skill：复制 [`skills/_template/`](./skills/_template/SKILL.md)（`metadata.internal: true`，不会被一键安装）。
+
+## 参与贡献
+
+提交 Skill 前请阅读[贡献指南](./CONTRIBUTING.md)和[技能质量标准](./docs/skill-quality-standards.md)。仓库会通过 GitHub Actions 自动校验全部 `SKILL.md` 的 frontmatter、目录结构和本地链接。
 
 ## 提示词
 

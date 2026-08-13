@@ -1,0 +1,41 @@
+name: 新 Skill 提案
+description: 建议新增一个可重复使用的 Agent Skill
+title: "[Skill]: "
+labels: ["skill proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: 感谢你的建议。请先确认该需求适合复用为 Skill，而不是一次性提示词。
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 这个 Skill 要解决什么重复出现的问题？
+      placeholder: 描述用户目标、当前痛点和典型输入。
+    validations:
+      required: true
+  - type: textarea
+    id: triggers
+    attributes:
+      label: 触发方式
+      description: 用户通常会怎样表达这个需求？
+      placeholder: 至少给出两个自然语言示例。
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: 期望输出
+      description: Skill 应生成什么结果，如何判断完成？
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考资料
+      description: 可选。提供规范、官方文档或现有实现链接。
+  - type: textarea
+    id: notes
+    attributes:
+      label: 补充说明
+      description: 可选。填写边界、风险或不应包含的内容。

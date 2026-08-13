@@ -1,12 +1,14 @@
 # xskills
 
-> 个人维护的 Agent Skills 与提示词集合：23 个 Skill 位于 `skills/`（按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
+> 个人维护的 Agent Skills 与提示词集合：24 个可安装 Skill 位于 `skills/`（另含 1 个内部模板，按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
 
 本仓库**不含应用业务代码**。Skill 以 **`SKILL.md` 入口**与 **references/** 为主；提示词为普通 Markdown，手动复制使用。入口说明见 [README](README.md)。
 
 ## Documentation
 
-- [README](README.md): 仓库说明、Skill 目录约定、`npx skills add xiongxianzhu/xskills --list` 列出可装技能、安装方式、本仓库 24 个技能与外部推荐技能、`LICENSE` 入口
+- [README](README.md): 仓库说明、Skill 目录约定、安装方式、本仓库 24 个可安装技能、贡献入口与 `LICENSE`
+- [贡献指南](CONTRIBUTING.md): 新增或修改 Skill 的目录、frontmatter、链接、本地校验和 Pull Request 要求
+- [技能质量标准](docs/skill-quality-standards.md): Skill 的触发、流程、输出、精简性、安全性与自动校验范围
 - [AI 漫剧技能分类索引](skills/ai-drama/README.md): ai-drama 容器，14 个 skill 按剧本/分镜/角色设定分组，含工作流概览
 - [AI 音乐技能分类索引](skills/ai-music/README.md): ai-music 容器，2 个 skill，含工作流概览
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
@@ -108,6 +110,8 @@
 - [Git 工作流约定（分支与 Conventional Commits）](.cursor/rules/git-workflow.mdc): 本仓库协作时建议遵循的分支命名与提交类型
 - [Git 提交信息规则（简体中文）](.cursor/rules/git-commit-message.mdc): Cursor Git 面板生成提交信息时使用简体中文 Conventional Commits
 - [.gitignore](.gitignore): 版本库忽略规则
+- [Skill 自动校验工作流](.github/workflows/validate-skills.yml): 在 main 分支提交和 Pull Request 中运行测试与全仓库校验
+- [Skill 校验脚本](scripts/validate_skills.py): 检查所有 SKILL.md 的 frontmatter、名称、目录结构和本地链接
 
 ## Optional
 

@@ -68,6 +68,28 @@
       box-shadow: 0 12px 34px rgba(37, 55, 76, 0.08);
     }
 
+    #wechat-article pre {
+      scrollbar-width: thin;
+      scrollbar-color: #3d5a7a transparent;
+    }
+
+    #wechat-article pre::-webkit-scrollbar {
+      height: 7px;
+    }
+
+    #wechat-article pre::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #wechat-article pre::-webkit-scrollbar-thumb {
+      background: #3d5a7a;
+      border-radius: 4px;
+    }
+
+    #wechat-article pre::-webkit-scrollbar-thumb:hover {
+      background: #4a6b8f;
+    }
+
     @media (max-width: 560px) {
       .toolbar-inner {
         align-items: stretch;
@@ -118,14 +140,22 @@
       status.textContent = message;
     }
 
+    function buildCopyContent() {
+      const clone = article.cloneNode(true);
+      const headings = clone.querySelectorAll("h1");
+      headings.forEach(function (h) { h.remove(); });
+      return clone;
+    }
+
     async function copyArticle() {
       if (!article) {
         setStatus("未找到文章内容，请检查模板占位符");
         return;
       }
 
-      const html = article.outerHTML;
-      const plain = article.innerText;
+      const clone = buildCopyContent();
+      const html = clone.outerHTML;
+      const plain = clone.innerText;
 
       if (navigator.clipboard && window.ClipboardItem) {
         try {
@@ -134,26 +164,33 @@
             "text/plain": new Blob([plain], { type: "text/plain" })
           });
           await navigator.clipboard.write([item]);
-          setStatus("已复制，可直接粘贴到微信公众号编辑器");
+          setStatus("已复制正文（不含标题），可直接粘贴到微信公众号编辑器");
           return;
         } catch (error) {
           // 本地文件或浏览器权限可能阻止 Clipboard API，继续兼容复制。
         }
       }
 
-      const selection = selectArticle();
+      // 兼容复制：选中克隆节点（已移除 h1），提示用户手动按 Ctrl/Cmd+C。
+      // 手动复制会保留 HTML 格式（含行内样式），execCommand("copy") 只能复制纯文本。
+      clone.style.position = "fixed";
+      clone.style.left = "-9999px";
+      clone.style.top = "0";
+      document.body.appendChild(clone);
 
-      try {
-        if (document.execCommand("copy")) {
-          selection.removeAllRanges();
-          setStatus("已复制，可直接粘贴到微信公众号编辑器");
-          return;
-        }
-      } catch (error) {
-        // 保留选区，方便用户手动复制。
-      }
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(clone);
+      selection.removeAllRanges();
+      selection.addRange(range);
 
-      setStatus("浏览器未允许自动复制，文章已选中，请按 Ctrl/Cmd+C");
+      setStatus("正文已选中，请按 Ctrl/Cmd+C 复制（保留富文本格式）");
+
+      // 30 秒后自动清理克隆节点和选区
+      setTimeout(function () {
+        clone.remove();
+        selection.removeAllRanges();
+      }, 30000);
     }
 
     button.addEventListener("click", copyArticle);
