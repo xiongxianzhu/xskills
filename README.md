@@ -99,7 +99,7 @@ npx skills list -g
 | [git-branch-naming](https://github.com/laurigates/claude-plugins/tree/main/git-plugin/skills/git-branch-naming) | 分支命名规范 |
 | [design-taste-frontend](https://skills.sh/Leonxlnx/taste-skill/design-taste-frontend) | 反模板化落地页 / 作品集 |
 | [skill-creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) | 创建与改进 Agent Skill |
-| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices) | React / Next.js 性能优化 |
+| [vercel-react-best-practices](https://skills.sh/vercel-labs/agent-skills/react-best-practices) | Vercel 官方 React / Next.js 性能优化与代码审查指南 |
 | [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | Web Interface Guidelines 审查 |
 | [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | OpenAI / Gemini 生图 |
 | [documentation-writer](https://skills.sh/github/awesome-copilot/documentation-writer) | 基于 Diátaxis 框架的技术文档写作 |
