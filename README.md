@@ -17,7 +17,7 @@
 
 ---
 
-为 Cursor、Claude Code 等智能体提供可安装技能（[`skills/`](./skills/)）与可复制提示词（[`prompts/`](./prompts/)）。技能用 [`npx skills`](https://www.npmjs.com/package/skills) 安装；提示词复制或 `@` 引用即可。
+为 ChatGPT、Cursor、Claude Code 等智能体提供可安装技能（[`skills/`](./skills/)）与可复制提示词（[`prompts/`](./prompts/)）。技能用 [`npx skills`](https://www.npmjs.com/package/skills) 安装；提示词复制或 `@` 引用即可。
 
 > **Agent / LLM**：先读 [`llms.txt`](./llms.txt) 对齐文档导航。
 
@@ -103,6 +103,7 @@ npx skills list -g
 | [web-design-guidelines](https://skills.sh/vercel-labs/agent-skills/web-design-guidelines) | Web Interface Guidelines 审查 |
 | [generate-image](https://skills.sh/github/awesome-copilot/generate-image) | OpenAI / Gemini 生图 |
 | [documentation-writer](https://skills.sh/github/awesome-copilot/documentation-writer) | 基于 Diátaxis 框架的技术文档写作 |
+| [create-agentsmd](https://skills.sh/github/awesome-copilot/create-agentsmd) | 为仓库生成 AGENTS.md 编码智能体操作指南，与 `create-llms` / `update-llms` 配套 |
 | [documentation](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/documentation/SKILL.md) | 技术文档写作，覆盖 README、API、架构、运维手册与入职指南；与本仓库 `docs-writer` 对标 |
 | [system-design](https://skills.sh/anthropics/knowledge-work-plugins/system-design) | 从需求、规模与约束出发设计系统边界、组件和技术架构 |
 | [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | 避免过度设计、精准改动 |
@@ -119,6 +120,7 @@ npx skills add github/awesome-copilot --skill git-commit -g -y
 npx skills add github/awesome-copilot --skill prd -g -y
 npx skills add github/awesome-copilot --skill create-llms -g -y
 npx skills add github/awesome-copilot --skill update-llms -g -y
+npx skills add github/awesome-copilot@create-agentsmd -g -y
 npx skills add google-labs-code/stitch-skills --skill stitch::extract-design-md -g -y
 npx skills add laurigates/claude-plugins --skill git-branch-naming -g -y
 npx skills add leonxlnx/taste-skill --skill design-taste-frontend -g -y
