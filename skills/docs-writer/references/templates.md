@@ -7,9 +7,15 @@
 项目入口。目标：30 秒内让读者判断"要不要用"，2 分钟内跑通第一个示例。
 
 ```markdown
+<div align="center">
+
 # 项目名
 
 [一句话价值主张：解决什么问题，不是堆功能]
+
+[根据仓库事实生成 2–4 枚 Shields.io 徽章，所有 URL 使用 style=for-the-badge]
+
+</div>
 
 ## 安装
 
@@ -36,10 +42,17 @@
 
 ### 完整示例
 
-```markdown
+````markdown
+<div align="center">
+
 # filesort
 
 按文件大小排序与导出，支持过滤与递归扫描。
+
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white&style=for-the-badge)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
+
+</div>
 
 ## 安装
 
@@ -91,7 +104,7 @@ sudo filesort /var/log
 ## 许可
 
 MIT
-```
+````
 
 ## API 文档
 
