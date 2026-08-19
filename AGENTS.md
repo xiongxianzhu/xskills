@@ -18,12 +18,47 @@
 
 等待用户回答后，再给出最终输出。
 
+## Git
+
+- 提交信息采用 Conventional Commits，例如 `feat(auth): 添加路由守卫`。
+- 提交描述默认使用简体中文。
+- 只暂存当前任务相关文件；提交前检查暂存内容，不得夹带日志、构建产物、编辑器文件或敏感信息。
+- 不得对 `.gitignore` 忽略的目录或文件执行 `git add`；忽略规则只防未被追踪的文件，显式 `add` 会绕过忽略。
+- 用户明确调用 `git-commit` Skill 时，提交当前任务相关改动后推送当前分支。
+- 当前分支没有上游时，将上游设置为 `origin` 的同名分支后推送。
+- 没有可提交改动但存在未推送提交时，只执行推送，不创建空提交。
+- 提交失败时不继续推送；推送失败时保留本地提交，并报告失败原因和当前状态。
+- 禁止强制推送、覆盖远端历史或暂存无关文件来规避失败。
+
+## 项目概览
+
+- 本仓库是跨智能体共用的 Agent Skills 与提示词集合，纯 Markdown 文档仓库，无应用业务代码、无构建产物。
+- 面向 ChatGPT、Cursor、Claude Code 等智能体分发，通过 `npx skills add xiongxianzhu/xskills` 安装。
+- 推送到 GitHub 即发布，无需 npm 发布流程。
+
 ## 仓库定位
 
 - `skills/` 存放可重复使用的 Agent Skills。
 - `prompts/` 存放单次使用或手动引用的提示词。
 - `llms.txt` 提供面向智能体的仓库导航。
-- 本仓库不包含应用业务代码。
+- `docs/skill-quality-standards.md` 是技能质量标准。
+- `tests/` 与 `scripts/validate_skills.py` 负责 Skill 结构校验。
+
+## 本地校验
+
+```bash
+# 安装校验依赖（一次性）
+python -m pip install -r requirements-ci.txt
+
+# 运行全部校验
+python -m unittest discover -s tests -v
+python scripts/validate_skills.py
+git diff --check
+```
+
+- 首次校验前必须先安装依赖，否则 `validate_skills.py` 无法运行。
+- 修改 Skill、README 或 llms.txt 后必须重新运行校验。
+- GitHub Actions 在 `main` 分支提交和 Pull Request 时执行相同校验，本地通过即可避免 CI 失败。
 
 ## Skill 约定
 
@@ -53,14 +88,22 @@
 - 修改脚本时，至少运行一个代表性示例。
 - 完成后报告已验证项目和未能执行的检查。
 
-## Git
+## Pull Request
 
-- 提交信息采用 Conventional Commits。
-- 提交描述默认使用简体中文。
-- 只暂存当前任务相关文件。
-- 不得对 `.gitignore` 忽略的目录或文件执行 `git add`；忽略规则只防未被追踪的文件，显式 `add` 会绕过忽略。
-- 用户明确调用 `git-commit` Skill 时，提交当前任务相关改动后推送当前分支。
-- 当前分支没有上游时，将上游设置为 `origin` 的同名分支后推送。
-- 没有可提交改动但存在未推送提交时，只执行推送，不创建空提交。
-- 提交失败时不继续推送；推送失败时保留本地提交，并报告失败原因和当前状态。
-- 禁止强制推送、覆盖远端历史或暂存无关文件来规避失败。
+- 一个 Pull Request 只处理一个明确主题。
+- 用简体中文说明动机、主要变化和验证结果。
+- 提交前确认校验全部通过，`README.md` 与 `llms.txt` 已按需同步。
+
+## 发布
+
+- 推送到 `main` 即发布：`git push origin main`。
+- 已安装用户通过 `npx skills update <技能名>` 或 `npx skills update -g -y` 更新。
+
+## 完成报告
+
+每次交付说明：
+
+- 完成了什么。
+- 修改了哪些文件或模块。
+- 执行了哪些验证及结果。
+- 仍有哪些风险、假设或阻塞项。
