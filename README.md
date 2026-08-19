@@ -107,6 +107,7 @@ npx skills list -g
 | [documentation](https://github.com/anthropics/knowledge-work-plugins/blob/main/engineering/skills/documentation/SKILL.md) | 技术文档写作，覆盖 README、API、架构、运维手册与入职指南；与本仓库 `docs-writer` 对标 |
 | [system-design](https://skills.sh/anthropics/knowledge-work-plugins/system-design) | 从需求、规模与约束出发设计系统边界、组件和技术架构 |
 | [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | 避免过度设计、精准改动 |
+| [grilling](https://skills.sh/mattpocock/skills/grilling) | 拷问式需求访谈：按设计树分轮提问，直到达成共识才动手 |
 | [brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | 写代码前先澄清需求、对比方案、确认设计（Superpowers 入口） |
 | [hatch-pet](https://github.com/openai/skills/blob/main/skills/.curated/hatch-pet/SKILL.md) | 创建、修复、校验并打包 Codex 动画宠物与精灵图 |
 | [jianying-editor](https://github.com/luoluoluo22/jianying-editor-skill) | 剪映 AI 自动化剪辑（录屏、字幕、Web 动效、导出） |
@@ -132,6 +133,7 @@ npx skills add github/awesome-copilot --skill documentation-writer -g -y
 npx skills add anthropics/knowledge-work-plugins --skill documentation -g -y
 npx skills add anthropics/knowledge-work-plugins --skill system-design -g -y
 npx skills add multica-ai/andrej-karpathy-skills --skill karpathy-guidelines -g -y
+npx skills add mattpocock/skills --skill grilling -g -y
 npx skills add obra/superpowers --skill brainstorming -g -y
 npx skills add openai/skills --skill hatch-pet -g -y
 npx skills add luoluoluo22/jianying-editor-skill --skill jianying-editor -g -y
