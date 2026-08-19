@@ -28,6 +28,7 @@
 
 | 文件 | 说明 |
 | --- | --- |
+| [`coding/obsidian-cross-project-memory.md`](./coding/obsidian-cross-project-memory.md) | Obsidian 跨项目长期记忆：任务前检索上下文，任务后沉淀结论 |
 | [`meta/clarify-before-execute.md`](./meta/clarify-before-execute.md) | 先提问澄清需求，确认后再执行 |
 | [`meta/loop-readiness-check.md`](./meta/loop-readiness-check.md) | 四条件自检：该用 Prompt、Skill 还是 Loop |
 
