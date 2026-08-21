@@ -29,6 +29,7 @@
 | 文件 | 说明 |
 | --- | --- |
 | [`coding/obsidian-cross-project-memory.md`](./coding/obsidian-cross-project-memory.md) | Obsidian 跨项目长期记忆：任务前检索上下文，任务后沉淀结论 |
+| [`meta/superhuman-prompts.md`](./meta/superhuman-prompts.md) | 超人提示词七连：思维升级、加速学习、人生系统、身份重编程 |
 | [`meta/clarify-before-execute.md`](./meta/clarify-before-execute.md) | 先提问澄清需求，确认后再执行 |
 | [`meta/loop-readiness-check.md`](./meta/loop-readiness-check.md) | 四条件自检：该用 Prompt、Skill 还是 Loop |
 
