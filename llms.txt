@@ -1,15 +1,15 @@
 # xskills
 
-> 个人维护的 Agent Skills 与提示词集合：24 个可安装 Skill 位于 `skills/`（另含 1 个内部模板，按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
+> 个人维护的 Agent Skills 与提示词集合：25 个可安装 Skill 位于 `skills/`（另含 1 个内部模板，按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
 
 本仓库**不含应用业务代码**。Skill 以 **`SKILL.md` 入口**与 **references/** 为主；提示词为普通 Markdown，手动复制使用。入口说明见 [README](README.md)。
 
 ## Documentation
 
-- [README](README.md): 仓库说明、Skill 目录约定、安装方式、本仓库 24 个可安装技能、贡献入口与 `LICENSE`
+- [README](README.md): 仓库说明、Skill 目录约定、安装方式、本仓库 25 个可安装技能、贡献入口与 `LICENSE`
 - [贡献指南](CONTRIBUTING.md): 新增或修改 Skill 的目录、frontmatter、链接、本地校验和 Pull Request 要求
 - [技能质量标准](docs/skill-quality-standards.md): Skill 的触发、流程、输出、精简性、安全性与自动校验范围
-- [AI 漫剧技能分类索引](skills/ai-drama/README.md): ai-drama 容器，14 个 skill 按剧本/分镜/角色设定分组，含工作流概览
+- [AI 漫剧技能分类索引](skills/ai-drama/README.md): ai-drama 容器，15 个 skill 按剧本/分镜/角色设定分组，含工作流概览
 - [AI 音乐技能分类索引](skills/ai-music/README.md): ai-music 容器，2 个 skill，含工作流概览
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
 - [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
@@ -31,6 +31,7 @@
 - [guofeng-beauty-turnaround Skill 入口](skills/ai-drama/guofeng-beauty-turnaround/SKILL.md): 古风美女四视图设定板提示词，16:9，8+ 种古风风格
 - [guofeng-handsome-male-turnaround Skill 入口](skills/ai-drama/guofeng-handsome-male-turnaround/SKILL.md): 古风帅气男主四视图设定板提示词，16:9
 - [guofeng-character-3d-sheet Skill 入口](skills/ai-drama/guofeng-character-3d-sheet/SKILL.md): 超写实 3D 国漫 CG 角色四视图设定板提示词
+- [character-turnaround-sheet Skill 入口](skills/ai-drama/character-turnaround-sheet/SKILL.md): 通用人类与类人角色三视图提示词，支持文字、角色卡与参考图特征锁定
 - [chibi-character-redraw Skill 入口](skills/ai-drama/chibi-character-redraw/SKILL.md): 任意参考角色 Q 版轻写实（3 头身、白底、收藏级手办）重绘提示词，严格锁定原角色识别度
 - [character-design-board Skill 入口](skills/ai-drama/character-design-board/SKILL.md): 横版角色设定板（黑金版式 + 主肖像 + 三视图 + 多细节栏目，16:9 收藏级设定稿）
 - [suno-lyric-creator Skill 入口](skills/ai-music/suno-lyric-creator/SKILL.md): 面向 Suno AI 的全曲风歌曲与纯音乐创作，含歌词、Prompt、配器、查重
@@ -91,6 +92,8 @@
 - [古风男主风格库](skills/ai-drama/guofeng-handsome-male-turnaround/references/style-library.md): 古风男性角色风格与配饰定义
 - [Q 版角色一致性锁定](skills/ai-drama/chibi-character-redraw/references/identity-lock.md): 脸/眼/眉/嘴/妆/气质/发/纹理等识别特征锁定规则
 - [Q 版轻写实风格规范](skills/ai-drama/chibi-character-redraw/references/style-specs.md): 3 头身比例、轻写实 CG、光影色彩、画面基础与 Negative Prompt
+- [通用角色三视图身份锁定](skills/ai-drama/character-turnaround-sheet/references/identity-lock.md): 参考图、角色卡和类人角色的跨视图身份与不对称特征锁定规则
+- [通用角色三视图提示词模板](skills/ai-drama/character-turnaround-sheet/references/prompt-template.md): 16:9 四栏版式、A-Pose、三点布光和禁止项的提示词组织规范
 - [Suno 曲风矩阵](skills/ai-music/suno-lyric-creator/references/genre-matrix.md): 18+ 曲风的特征、BPM、配器与人声
 - [Suno 歌曲结构](skills/ai-music/suno-lyric-creator/references/song-structures.md): 主歌/副歌/桥段/前奏/尾奏的结构模板
 - [Suno Prompt 公式](skills/ai-music/suno-lyric-creator/references/prompt-formula.md): 英文 Prompt 的字段、顺序与写法

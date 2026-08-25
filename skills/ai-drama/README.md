@@ -56,5 +56,6 @@ npx skills add xiongxianzhu/xskills --skill <技能名> -g -y
 | [`guofeng-beauty-turnaround`](./guofeng-beauty-turnaround/SKILL.md) | 古风美女四视图设定板提示词，16:9，8+ 种古风风格 |
 | [`guofeng-handsome-male-turnaround`](./guofeng-handsome-male-turnaround/SKILL.md) | 古风帅气男主四视图设定板提示词，16:9 |
 | [`guofeng-character-3d-sheet`](./guofeng-character-3d-sheet/SKILL.md) | 超写实 3D 国漫 CG 角色四视图设定板提示词 |
+| [`character-turnaround-sheet`](./character-turnaround-sheet/SKILL.md) | 通用人类与类人角色三视图提示词，支持文字、角色卡与参考图特征锁定 |
 | [`chibi-character-redraw`](./chibi-character-redraw/SKILL.md) | 任意参考角色 → Q 版轻写实（3 头身、白底、收藏级手办）重绘提示词，严格锁定原角色识别度 |
 | [`character-design-board`](./character-design-board/SKILL.md) | 横版角色设定板（黑金版式 + 主肖像 + 三视图 + 多细节栏目，16:9 收藏级设定稿） |

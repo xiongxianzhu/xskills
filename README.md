@@ -7,7 +7,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-24-F59E0B?style=for-the-badge)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-25-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
 [![Validate Skills](https://img.shields.io/github/actions/workflow/status/xiongxianzhu/xskills/validate-skills.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=Validate%20Skills)](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml)
 [![Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Stars&color=181717)](https://github.com/xiongxianzhu/xskills/stargazers)
@@ -54,7 +54,7 @@ npx skills list -g
 
 | 分类 | 数量 | 说明 |
 | --- | --- | --- |
-| [`ai-drama`](./skills/ai-drama/README.md) | 14 | AI 漫剧全链路：小说原作 → 文案 → 分镜 → 视频提示词 → 角色设定 |
+| [`ai-drama`](./skills/ai-drama/README.md) | 15 | AI 漫剧全链路：小说原作 → 文案 → 分镜 → 视频提示词 → 角色设定 |
 | [`ai-music`](./skills/ai-music/README.md) | 2 | AI 音乐：Suno 作词与配器、MV 分镜与视频提示词 |
 
 新建 Skill：复制 [`skills/_template/`](./skills/_template/SKILL.md)（`metadata.internal: true`，不会被一键安装）。
