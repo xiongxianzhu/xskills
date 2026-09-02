@@ -113,6 +113,7 @@ npx skills list -g
 | [jianying-editor](https://github.com/luoluoluo22/jianying-editor-skill) | 剪映 AI 自动化剪辑（录屏、字幕、Web 动效、导出） |
 | [impeccable](https://skills.sh/pbakaus/impeccable/impeccable) | 生产级前端界面，避免通用 AI slop 美学 |
 | [diagram-design](https://skills.sh/cathrynlavery/diagram-design/diagram-design) | 单文件 HTML/SVG 图表生成：27 种图型，品牌风格引导，语义模式驱动 |
+| [humanizer](https://github.com/blader/humanizer) | 去除 AI 腔：按维基「AI 写作迹象」35 种模式把文本改写为自然人写作风格，不改变原意与事实 |
 
 ```bash
 npx skills add anthropics/skills --skill frontend-design -g -y
@@ -140,6 +141,7 @@ npx skills add openai/skills --skill hatch-pet -g -y
 npx skills add luoluoluo22/jianying-editor-skill --skill jianying-editor -g -y
 npx skills add pbakaus/impeccable@impeccable -g -y
 npx skills add cathrynlavery/diagram-design --skill diagram-design -g -y
+npx skills add blader/humanizer --skill humanizer -g -y
 ```
 
 ## 故障排查
