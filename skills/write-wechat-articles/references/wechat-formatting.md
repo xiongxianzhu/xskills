@@ -14,35 +14,22 @@
 
 以下原则内置生效，无需额外调用设计技能。
 
-### 色彩一致性
+### 主题与颜色
 
-- 全文锁定一个强调色 `#246ba5`，标题左边线、序号、链接、表头底边线统一使用。
-- 不引入渐变、阴影、大面积色块或第二个强调色。
-- 正文不设显式文字颜色，由微信主题自动适配深浅模式。
+- 按 [themes.md](themes.md) 选择 6 款预设之一，统一应用其边线、字体、间距与圆角参数。
+- 正文和所有非代码组件继承阅读环境文字色、使用透明背景。主题色只用于边线，链接保留下划线。
+- 不增加渐变、阴影、大面积色块、装饰圆点或第二个强调色。代码语法高亮是独立的语义配色，不用于正文装饰。
+- 深浅色检查与导出配色分离：预览环境可切换，复制出的文章片段保持相同。
 
-### 圆角一致性
+### 排版与文案
 
-- 全文统一使用 `6px` 圆角（代码块、图片占位、表格等），不混用不同圆角值。
-
-### 排版反默认
-
-- 不使用 AI 紫色光效、虚假界面截图或装饰性渐变。
-- 不使用装饰性圆点、版本标签、序号前缀（标题序号除外）或滚动提示。
-- 表格只用于真正的结构化对比，不用表格撑版面；超过 5 行的数据考虑拆分或改用列表。
-- 标题用字号和粗细区分层级，不靠装饰元素或大段留白制造节奏。
-
-### 文案自检
-
-- 完稿后逐句重读所有可见文字（标题、正文、代码注释、图片说明、互动语）。
-- 删除填充动词：彻底讲透、赋能、颠覆、一站式、无缝衔接。
-- 不使用破折号（—）作为装饰或分隔，用逗号、句号或括号替代。
+- 标题用字号、粗细和主题边线区分层级；不靠装饰标签、大段留白或无关序号制造节奏。
+- 表格只用于结构化对比，超过 5 行时优先拆分；宽表格改为列表，不能撑宽页面。
+- 不使用 AI 紫色光效、虚假界面截图或装饰性渐变。鸢尾紫仅使用克制的纯色边线。
+- 完稿后逐句重读标题、正文、代码注释、图片说明和互动语。
+- 按 [natural-writing.md](natural-writing.md) 检查文风，重写“彻底讲透、赋能、颠覆、一站式、无缝衔接”等缺少具体信息的套话；不机械替换术语、引文、代码或提示词中的词语。
+- 默认减少装饰性破折号，优先使用逗号、句号或括号；作者样稿中有明确用途的标点可保留，代码与引文标点不因文风润色而改动。
 - 数字必须有依据，不编造精确到小数点的虚假指标。
-
-### 深色主题兼容
-
-- 代码块保留固定深色背景（`#172331`），两种主题下都可读。
-- 提示框、图片占位、表格等非代码组件不设背景色，仅用边框区分。
-- 正文不设显式文字颜色，交由微信主题反转；标题颜色使用深色系（`#173b5d`），深色主题下仍可辨。
 
 ## 默认输出结构
 
@@ -75,9 +62,11 @@
 - 单文件运行，不依赖网络资源。
 - 只复制 `#wechat-article` 的正文内容（不含 `<h1>` 标题），不复制按钮、说明、状态或页面背景。
 - 优先写入 `text/html` 与 `text/plain`。
-- 富文本剪贴板接口不可用时，选中正文并尝试兼容复制。
-- 兼容复制失败时保留选中状态，提示用户手动复制。
+- 富文本剪贴板接口不可用时，使用同一文章克隆尝试兼容复制。
+- 兼容复制失败时显示不含标题的正文副本并保留选中状态，提示用户手动复制；副本保持可见，直到用户关闭或再次复制。
 - 与 `wechat.md` 使用完全相同的文章片段。
+- 提供“跟随系统 / 浅色 / 深色”阅读环境切换，仅改变预览外壳的文字和背景，不修改文章节点的行内样式。
+- 明示“预览检查不等于微信真机效果”；外壳样式不能替文章补上缺失的宽度或滚动规则。
 
 ### 配图清单
 
@@ -105,7 +94,7 @@
 
 ### 文末互动语
 
-只问 1 个与文章内容直接相关的问题。不要求点赞、在看或转发。
+可选。确有具体讨论点或用户要求互动时，最多问 1 个与正文直接相关的问题；否则自然结束。不以“你怎么看”凑结尾，不要求点赞、在看或转发。
 
 ## 自动保存
 
@@ -150,82 +139,94 @@
 
 ## 文章 HTML 样式
 
-默认采用冷静、克制的技术编辑风。根节点使用：
+组件中的 `{{ACCENT}}`、`{{RADIUS}}`、`{{LINE_HEIGHT}}`、`{{PARAGRAPH_GAP}}`、`{{HEADING_FONT}}` 和 `{{H2_STYLE}}` 从 [themes.md](themes.md) 展开。所有模板标记须在生成文章片段时替换完毕；预览外壳只接收最终的 `{{ARTICLE_HTML}}`。
+
+### 容器与文字
+
+根节点使用以下结构，示例内容替换为正文：
 
 ```html
-<section id="wechat-article" style="box-sizing:border-box !important;display:block !important;margin:0 auto !important;padding:4px 4px 32px !important;max-width:677px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif !important;font-size:16px !important;line-height:1.85 !important;word-break:break-word;border:0 !important;background:transparent !important;">
+<section id="wechat-article" style="box-sizing:border-box !important;display:block !important;width:100% !important;min-width:0 !important;max-width:677px !important;margin:0 auto !important;padding:4px 4px 32px !important;border:0 !important;background:transparent !important;color:inherit !important;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif !important;font-size:16px !important;line-height:{{LINE_HEIGHT}} !important;word-break:normal !important;overflow-wrap:anywhere !important;">
   <!-- 文章内容 -->
 </section>
 ```
 
-按以下规则排版：
+- 各正文组件显式设置必要的字号、行高、间距、背景和 `color:inherit`；关键布局声明使用行内 `!important`。这是减少编辑器默认样式影响的措施，不能阻止平台过滤或保证暗色转换行为。
+- 主标题 24px / 1.4、700 字重，使用主题标题字体；二级标题 19px / 1.5、700 字重；三级标题 17px / 1.6、700 字重。步骤文章可用 `1.`、`1.1.` 编号，其他文章不强制编号。
+- 普通段落、列表、引用、图注、链接和表格均不设置固定文字色。链接额外写 `color:inherit !important;text-decoration:underline !important;`。
+- 图片宽度不超过容器，使用 `max-width:100% !important;height:auto !important;`；图片占位不用假截图。
+- 表格使用 `width:100%;table-layout:fixed` 和可断行的单元格。不能以页面级 `overflow-x:hidden` 掩盖溢出。
+- 行内短代码使用等宽字体、继承文字色及透明背景，允许自然断行；很长的命令移入独立代码块。下述不换行规则针对代码块和提示词块。
 
-- 正文使用 `16px`、`1.85` 行高和 `#29323d`，段落下边距一般为 `16px`。
-- 主标题使用 `24px` 左右的深色粗体，标题下方只保留必要的栏目和日期信息。
-- 标题层级使用有序列表风格：二级标题使用 `1.`、`2.` 等序号，三级标题使用 `1.1.`、`1.2.` 等序号。
-- 二级标题使用 `19px` 左右的粗体和深蓝左边线；三级标题使用 `17px` 粗体。
-- 深蓝强调色使用 `#246ba5`，不要增加渐变、阴影或大面积色块。
-- 提示框使用 `#7fa8c7` 左边线，不设背景色（深色主题兼容）。
-- 代码块使用 macOS 风格：深灰背景 `#282c34`、圆角 6px、带阴影、顶部显示红黄绿窗口控件圆点；代码文字 `#abb2bf`，注释建议用 `<em>` 包裹设为 `#5c6370` 斜体，内置函数用 `#e6c07b`；长行水平滚动不换行。
-- 图片占位使用细边框和明确编号，不使用虚假图片。
-- 链接使用深蓝色和下划线；参考资料保持简短。
-- 表格使用边框分隔行，不使用单元格背景色，表头加粗即可。
-- 深色主题兼容：提示框、图片占位等非代码组件不设背景色，仅用边框区分；正文文字颜色由微信主题自动反转，不要手动设浅色文字。
-- 所有正文组件都写入必要的行内样式，不依赖根节点继承关键尺寸或颜色，避免粘贴时部分外层样式丢失。
-- **对抗编辑器覆盖：** 所有组件的关键属性（box-sizing、display、margin、padding、border、border-radius、background、color、font-family、font-size、font-weight、line-height、text-align、white-space、overflow、border-collapse）都显式声明并加 `!important`；不允许用继承或省略方式依赖默认值，否则会被公众号编辑器注入的默认样式覆盖。
-
-代码与提示词中的 `&`、`<`、`>` 必须分别转义为 `&amp;`、`&lt;`、`&gt;`。不要转义普通中文正文。
-
-文末互动问题放在文章 HTML 片段内，并保持与 Markdown 原稿一致。
-
-优先复用以下组件，只替换文字内容：
+### 常用组件
 
 ```html
-<p style="box-sizing:border-box !important;display:block !important;margin:0 0 16px !important;padding:0 !important;border:0 !important;background:transparent !important;font-size:16px !important;line-height:1.85 !important;font-weight:400 !important;text-align:left !important;">正文段落</p>
+<p style="box-sizing:border-box !important;display:block !important;margin:0 0 {{PARAGRAPH_GAP}} !important;padding:0 !important;border:0 !important;background:transparent !important;color:inherit !important;font-size:16px !important;line-height:{{LINE_HEIGHT}} !important;font-weight:400 !important;text-align:left !important;">正文段落</p>
 
-<h2 style="box-sizing:border-box !important;display:block !important;margin:26px 0 14px !important;padding:0 0 0 11px !important;border:0 !important;border-left:3px solid #246ba5 !important;background:transparent !important;color:#173b5d !important;font-size:19px !important;line-height:1.5 !important;font-weight:750 !important;text-align:left !important;"><span style="color:#246ba5 !important;margin-right:6px !important;font-weight:750 !important;">1.</span>二级标题</h2>
+<h2 style="box-sizing:border-box !important;display:block !important;margin:28px 0 14px !important;border:0 !important;{{H2_STYLE}}background:transparent !important;color:inherit !important;font-family:{{HEADING_FONT}} !important;font-size:19px !important;line-height:1.5 !important;font-weight:700 !important;text-align:left !important;">二级标题</h2>
 
-<h3 style="box-sizing:border-box !important;display:block !important;margin:20px 0 12px !important;padding:0 0 0 11px !important;border:0 !important;border-left:2px solid #7fa8c7 !important;background:transparent !important;color:#173b5d !important;font-size:17px !important;line-height:1.5 !important;font-weight:750 !important;text-align:left !important;"><span style="color:#7fa8c7 !important;margin-right:6px !important;font-weight:750 !important;">1.1.</span>三级标题</h3>
+<h3 style="box-sizing:border-box !important;display:block !important;margin:22px 0 12px !important;padding:0 !important;border:0 !important;background:transparent !important;color:inherit !important;font-family:{{HEADING_FONT}} !important;font-size:17px !important;line-height:1.6 !important;font-weight:700 !important;text-align:left !important;">三级标题</h3>
 
-<section style="box-sizing:border-box !important;display:block !important;margin:18px 0 !important;padding:13px 15px !important;border:0 !important;border-left:3px solid #7fa8c7 !important;background:transparent !important;border-radius:0 !important;">
-  <p style="box-sizing:border-box !important;display:block !important;margin:0 !important;padding:0 !important;border:0 !important;font-size:15px !important;line-height:1.8 !important;font-weight:400 !important;text-align:left !important;"><strong style="font-weight:750 !important;">关键点：</strong>提示内容</p>
+<section style="box-sizing:border-box !important;display:block !important;width:100% !important;min-width:0 !important;max-width:100% !important;margin:18px 0 !important;padding:10px 14px !important;border:0 !important;border-left:2px solid {{ACCENT}} !important;background:transparent !important;color:inherit !important;">
+  <p style="margin:0 !important;background:transparent !important;color:inherit !important;font-size:15px !important;line-height:1.8 !important;"><strong style="color:inherit !important;font-weight:700 !important;">关键点：</strong>提示内容</p>
 </section>
 
-<pre style="box-sizing:border-box !important;display:block !important;position:relative !important;margin:18px 0 !important;padding:1px 0 0 0 !important;border:0 !important;border-radius:6px !important;background:#282c34 !important;box-shadow:0 2px 10px rgba(0,0,0,0.35) !important;font-family:Consolas,Monaco,'Liberation Mono',Menlo,monospace !important;font-size:13px !important;line-height:1.7 !important;font-weight:400 !important;text-align:left !important;white-space:pre !important;word-break:normal !important;overflow-x:auto !important;"><span style="display:block !important;position:relative !important;margin:12px 0 0 12px !important;padding:0 !important;border-radius:50% !important;background:#ff5f56 !important;width:10px !important;height:10px !important;box-shadow:18px 0 0 #ffbd2e,36px 0 0 #27c93f !important;"><code style="display:block !important;margin:0 !important;padding:16px 14px !important;background:#282c34 !important;color:#abb2bf !important;font-family:Consolas,Monaco,'Liberation Mono',Menlo,monospace !important;font-size:13px !important;line-height:1.7 !important;font-weight:400 !important;text-align:left !important;white-space:pre !important;word-break:normal !important;overflow-x:auto !important;tab-size:4 !important;white-space:pre !important;">已转义的代码或提示词</code></pre>
-
-<section data-image-slot="01" style="box-sizing:border-box !important;display:block !important;margin:20px 0 8px !important;padding:34px 18px !important;border:1px solid #cddbe7 !important;border-radius:6px !important;background:transparent !important;text-align:center !important;">
-  <p style="box-sizing:border-box !important;display:block !important;margin:0 !important;padding:0 !important;border:0 !important;font-size:13px !important;line-height:1.7 !important;font-weight:400 !important;text-align:center !important;">【配图 01｜用途｜建议比例｜替换为公众号素材库图片】</p>
+<section data-image-slot="01" style="box-sizing:border-box !important;display:block !important;width:100% !important;max-width:100% !important;margin:20px 0 8px !important;padding:28px 16px !important;border:1px solid {{ACCENT}} !important;border-radius:{{RADIUS}} !important;background:transparent !important;color:inherit !important;text-align:center !important;">
+  <p style="margin:0 !important;background:transparent !important;color:inherit !important;font-size:14px !important;line-height:1.7 !important;">【配图 01｜用途｜建议比例｜替换为公众号素材库图片】</p>
 </section>
 
-<table style="box-sizing:border-box !important;display:table !important;width:100% !important;margin:18px 0 !important;padding:0 !important;border-collapse:collapse !important;font-size:15px !important;line-height:1.7 !important;border-spacing:0 !important;border:0 !important;background:transparent !important;">
-  <thead style="display:table-header-group !important;">
-    <tr style="display:table-row !important;">
-      <th style="box-sizing:border-box !important;display:table-cell !important;padding:10px 12px !important;border:0 !important;border-bottom:2px solid #246ba5 !important;background:transparent !important;font-size:inherit !important;line-height:inherit !important;font-weight:750 !important;text-align:left !important;">列标题</th>
-      <th style="box-sizing:border-box !important;display:table-cell !important;padding:10px 12px !important;border:0 !important;border-bottom:2px solid #246ba5 !important;background:transparent !important;font-size:inherit !important;line-height:inherit !important;font-weight:750 !important;text-align:left !important;">列标题</th>
-    </tr>
-  </thead>
-  <tbody style="display:table-row-group !important;">
-    <tr style="display:table-row !important;">
-      <td style="box-sizing:border-box !important;display:table-cell !important;padding:10px 12px !important;border:0 !important;border-bottom:1px solid #dce3eb !important;background:transparent !important;font-size:inherit !important;line-height:inherit !important;font-weight:400 !important;text-align:left !important;">单元格</td>
-      <td style="box-sizing:border-box !important;display:table-cell !important;padding:10px 12px !important;border:0 !important;border-bottom:1px solid #dce3eb !important;background:transparent !important;font-size:inherit !important;line-height:inherit !important;font-weight:400 !important;text-align:left !important;">单元格</td>
-    </tr>
-  </tbody>
+<table style="box-sizing:border-box !important;display:table !important;width:100% !important;max-width:100% !important;table-layout:fixed !important;margin:18px 0 !important;border-collapse:collapse !important;border-spacing:0 !important;background:transparent !important;color:inherit !important;font-size:15px !important;line-height:1.7 !important;overflow-wrap:anywhere !important;">
+  <thead><tr>
+    <th style="padding:10px !important;border-bottom:2px solid {{ACCENT}} !important;background:transparent !important;color:inherit !important;font-weight:700 !important;text-align:left !important;">条件</th>
+    <th style="padding:10px !important;border-bottom:2px solid {{ACCENT}} !important;background:transparent !important;color:inherit !important;font-weight:700 !important;text-align:left !important;">结果</th>
+  </tr></thead>
+  <tbody><tr>
+    <td style="padding:10px !important;border-bottom:1px solid {{ACCENT}} !important;background:transparent !important;color:inherit !important;">单元格</td>
+    <td style="padding:10px !important;border-bottom:1px solid {{ACCENT}} !important;background:transparent !important;color:inherit !important;">单元格</td>
+  </tr></tbody>
 </table>
 ```
 
-### 代码块语法高亮写法
+### 代码块与提示词块
 
-代码块内的语义元素用 `<span>` 包裹以实现语法高亮，推荐使用以下映射：
+以下组件是所有主题的共同约束，适用于单行命令、多行代码和完整提示词。代码块圆角默认 2px，上限 2px，不使用主题的 `RADIUS` 参数；内层代码元素保持直角：
 
-| 语义 | 写法 | 效果 |
-|------|------|------|
-| 注释 | `<span style="color:#5c6370;font-style:italic;">注释文字</span>` | 灰色斜体 |
-| 内置函数/关键字 | `<span style="color:#e6c07b;">函数名</span>` | 橙色 |
-| 字符串 | `<span style="color:#98c379;">"字符串"</span>` | 绿色 |
-| 数字/常量 | `<span style="color:#d19a66;">42</span>` | 橙色 |
-| 命令/操作符 | `<span style="color:#56b6c2;">\|\|\|&&\|\-></span>` | 青色 |
+```html
+<pre tabindex="0" aria-label="代码块，可横向滚动" style="box-sizing:border-box !important;display:block !important;width:100% !important;min-width:0 !important;max-width:100% !important;margin:18px 0 !important;padding:16px !important;border:1px solid #74808c !important;border-radius:2px !important;background:#202630 !important;color:#e6edf3 !important;font-family:Consolas,Monaco,'Liberation Mono',Menlo,monospace !important;font-size:13px !important;line-height:1.7 !important;font-weight:400 !important;text-align:left !important;white-space:pre !important;word-break:normal !important;overflow-wrap:normal !important;word-wrap:normal !important;hyphens:none !important;overflow-x:auto !important;overflow-y:hidden !important;tab-size:4 !important;-webkit-overflow-scrolling:touch;"><code style="display:block !important;width:max-content !important;min-width:100% !important;margin:0 !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;color:#e6edf3 !important;font-family:Consolas,Monaco,'Liberation Mono',Menlo,monospace !important;font-size:13px !important;line-height:1.7 !important;font-weight:400 !important;text-align:left !important;white-space:pre !important;word-break:normal !important;overflow-wrap:normal !important;word-wrap:normal !important;hyphens:none !important;tab-size:4 !important;">已转义的代码或提示词</code></pre>
+```
 
-无需高亮的代码直接写纯文本即可。
+- `<pre>` 是唯一横向滚动容器，宽度始终受文章约束；内层 `<code>` 可按内容伸展。不在内层再设置滚动条，也不把正文包进 flex/grid。若外层确实使用 flex/grid，对包含代码块的项目设置 `min-width:0`。
+- `white-space:pre` 保留原始换行和空格且不自动折行；同时在 `pre`、`code` 及高亮 `span` 上禁止单词断行。不能用 `pre-wrap`、`break-all`、`overflow-wrap:anywhere` 或 `nowrap` 替代代码块规则。
+- 不向单行插入换行、`<br>`、`<wbr>`、软连字符或零宽空格。不为排版缩短命令、截断内容、使用省略号或缩小字体。
+- 多行输入保留原始行数、空行及缩进；不是把整个代码块压成一行。不要为了美化 HTML 源码在 `<code>` 标签与实际代码之间添加缩进或空行。
+- 不设置固定高度、最大高度、行数限制或内层隐藏溢出。长行可横向读到结尾，多行在垂直方向完整展示。
+- 默认不带红黄绿窗口圆点、阴影或独立工具栏。高亮只使用合法闭合的行内 `span`，不允许把代码放进图标或装饰节点。
+- 使用 HTML 转义函数对代码及提示词的 `&`、`<`、`>` 转义一次；序列化后的 DOM 文本应与原文一致，不做二次转义。文末互动语也保持与 Markdown 原稿一致。
+
+### 可选语法高亮
+
+深色代码底固定为 `#202630`。共享配色如下，注释也必须清晰，不用低对比灰色或低透明度：
+
+| 语义 | 颜色 |
+| --- | --- |
+| 普通代码 | `#e6edf3` |
+| 注释 | `#aab6c5` |
+| 关键字、函数 | `#d8c5fa` |
+| 字符串 | `#b5d99c` |
+| 数字、常量 | `#f2c38b` |
+| 命令、操作符 | `#9ddce2` |
+
+示例：`<span style="color:#aab6c5 !important;font-style:normal !important;white-space:pre !important;word-break:normal !important;overflow-wrap:normal !important;">注释文字</span>`。不确定语言或分词边界时使用纯文本，不能为高亮改变代码。真机改色后的回退见 [themes.md](themes.md)。
+
+### 浏览器验收与平台边界
+
+- 每款主题检查 320px、375px 和 768px 宽度下的浅色与深色预览；页面及文章不能出现横向滚动。
+- 测试至少包含一行很长的命令、一行中英文混排提示词、带空行和缩进的多行代码、长链接、引用和表格。
+- 长行应满足 `pre.scrollWidth > pre.clientWidth`，且能够滚到末尾；短单行只占一行，多行保持输入行数。移除预览外壳样式后再次检查，确认滚动依赖文章行内 CSS。
+- 复制与环境切换不能改变源文章 HTML。检查现代剪贴板、兼容复制、手动复制三条路径，都只包含不带 `h1` 的正文，不夹带预览主题配色或工具栏。
+- 微信编辑器粘贴与手机实测单独记录。未执行时说明“浏览器已检查，微信真机待验证”，不能将模拟结果当作发布保证。
+
+实现依据：[MDN white-space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space)、[MDN overflow-x](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x)、[W3C G148 阅读环境配色策略](https://www.w3.org/WAI/WCAG22/Techniques/general/G148)。这些资料说明浏览器行为和可访问性原则，不证明微信公众号对每项 CSS 的支持。
 
 ## 图片规则
 

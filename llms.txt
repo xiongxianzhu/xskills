@@ -72,8 +72,10 @@
 - [小游戏构建与验证](skills/cocos-mini-game/references/build-and-validation.md): Web、微信、抖音的构建顺序、测试矩阵和状态记录
 - [小游戏发布与运营](skills/cocos-mini-game/references/release-and-operations.md): 发布准备边界、首版指标与迭代循环
 - [公众号文章结构](skills/write-wechat-articles/references/article-patterns.md): 教程、原理、复盘、评测、AI 创作与提示词分享的最小结构
+- [公众号自然写作](skills/write-wechat-articles/references/natural-writing.md): 专业自然的作者口吻、中文去套话、段落重写、事实保真与保护边界
 - [公众号研究规范](skills/write-wechat-articles/references/research-policy.md): 一手资料、事实状态、代码、提示词与图片核验规则
-- [公众号排版规范](skills/write-wechat-articles/references/wechat-formatting.md): Markdown、HTML 源码、富文本复制预览、图片占位与配图清单格式
+- [公众号排版规范](skills/write-wechat-articles/references/wechat-formatting.md): Markdown、HTML 源码、富文本复制、代码块水平滚动与图片格式
+- [公众号排版主题](skills/write-wechat-articles/references/themes.md): 6 款预设、微信深浅阅读兼容策略与真机检查边界
 - [公众号发布检查](skills/write-wechat-articles/references/quality-checklist.md): 技术正确性、简洁性、排版、图片与风险检查
 - [小说动态市场选题](skills/ai-drama/ai-novel-writer/references/market-positioning.md): 当前榜单检索、证据分级、赛道判断、三案评分与选题停止点
 - [小说书名多平台同名检测](skills/ai-drama/ai-novel-writer/references/title-collision-check.md): 番茄、起点、七猫、晋江与纵横的精确同名、高相似风险、证据记录与失败降级
@@ -105,7 +107,7 @@
 - [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 完整 PRD 示例与需求澄清对话
 - [Agnes Image 生成脚本](skills/agnes-image/scripts/generate.py): 文生图 / 图生图 CLI，SKILL 推荐优先调用
 - [Agnes Video 生成脚本](skills/agnes-video/scripts/generate.py): 视频生成 CLI，SKILL 推荐优先调用
-- [公众号富文本预览模板](skills/write-wechat-articles/assets/wechat-preview-template.html): 单文件预览、富文本复制与手动复制降级逻辑
+- [公众号富文本预览模板](skills/write-wechat-articles/assets/wechat-preview-template.html): 单文件深浅阅读预览、富文本复制与可见手动复制回退
 
 ## Configuration
 

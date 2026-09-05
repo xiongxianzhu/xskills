@@ -45,10 +45,14 @@ npx skills list -g
 | [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes Video 文生 / 图生 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
 | [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [说明](./skills/dingtalk-log/references/usage.md) |
 | [`cocos-mini-game`](./skills/cocos-mini-game/SKILL.md) | 从主题、PRD 和任务规划开始，开发微信/抖音双端 Cocos Creator 2D IAA 小游戏 | [PRD 模板](./skills/cocos-mini-game/references/prd-template.md) |
-| [`write-wechat-articles`](./skills/write-wechat-articles/SKILL.md) | 编写技术与 AI 创作实践公众号文章，生成可复制的 HTML 富文本预览 | [排版](./skills/write-wechat-articles/references/wechat-formatting.md) |
+| [`write-wechat-articles`](./skills/write-wechat-articles/SKILL.md) | 编写技术与 AI 创作实践公众号文章，内置 6 款阅读主题与 HTML 富文本预览 | [排版](./skills/write-wechat-articles/references/wechat-formatting.md)、[主题](./skills/write-wechat-articles/references/themes.md) |
 | [`docs-writer`](./skills/docs-writer/SKILL.md) | 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构 | [模板](./skills/docs-writer/references/templates.md) · [风格](./skills/docs-writer/references/style-guide.md) |
 
 `write-wechat-articles` 会将文章保存到 `微信公众号文章/YYYY-MM-DD-短标题/`，并生成 `article.md`、`wechat.md`、`wechat.html` 和 `assets.md`。打开 `wechat.html`，点击“复制到公众号”后可直接粘贴到微信公众号编辑器。
+
+支持极简墨色、技术蓝、松针绿、暖砂棕、朱砂红和鸢尾紫，可直接指定主题名称。正文以兼容微信深浅阅读模式为目标；预览页可切换阅读环境，实际微信效果需在粘贴后检查。代码保留原始换行，长行仅在块内水平滚动。
+
+文章默认采用专业自然的技术作者口吻，支持“去 AI 味、去套话”。按[自然写作规范](./skills/write-wechat-articles/references/natural-writing.md) 重写段落并对照事实，保留真实细节与技术内容，不虚构亲身经历，不强制总结或互动结尾。
 
 按领域分类的技能容器（catalog 布局，安装命令不变）：
 
