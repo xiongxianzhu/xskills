@@ -102,7 +102,7 @@
 ## Examples
 
 - [API 文档示例（虚构图书管理系统）](skills/api-docs/references/examples.md): 与 specification 对齐的完整示例
-- [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 简化版 / 标准版示例
+- [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 完整 PRD 示例与需求澄清对话
 - [Agnes Image 生成脚本](skills/agnes-image/scripts/generate.py): 文生图 / 图生图 CLI，SKILL 推荐优先调用
 - [Agnes Video 生成脚本](skills/agnes-video/scripts/generate.py): 视频生成 CLI，SKILL 推荐优先调用
 - [公众号富文本预览模板](skills/write-wechat-articles/assets/wechat-preview-template.html): 单文件预览、富文本复制与手动复制降级逻辑
