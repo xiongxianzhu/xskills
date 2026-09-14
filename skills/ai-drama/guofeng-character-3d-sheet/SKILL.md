@@ -1,6 +1,6 @@
 ---
 name: "guofeng-character-3d-sheet"
-description: "生成超写实3D国漫CG角色设定板，包含上半身特写+全身正视图+侧视图+背视图四视图。Invoke when user asks for character design sheet, 3D character render, four-view character, or needs to generate a complete character profile for AI image generation."
+description: "为明确要求超写实 3D 国漫 CG 风格的角色编写四视图设定板提示词，含上半身特写及全身正、侧、背视图。只输出提示词；不用于通用画风三视图或直接生成图片。"
 ---
 
 # 超写实3D国漫CG角色设定板生成器

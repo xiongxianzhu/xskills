@@ -1,6 +1,6 @@
 ---
 name: write-wechat-articles
-description: 为中文微信公众号撰写、改写和润色专业自然的技术与 AI 创作实践文章。用户要求写公众号文章、技术教程、原理分析、故障复盘、工具或 AI 产品评测、AI 漫剧/视频/音乐工作流、提示词分享，把笔记、代码、日志、链接和草稿整理成公众号稿，为公众号文章去 AI 味、去套话，或调整公众号排版主题、深浅阅读兼容与代码块样式时使用。内置 6 款主题，默认主动检索一手资料，将 Markdown 原稿、可复制的 HTML 源码、公众号富文本预览页和素材说明自动保存到当前工作区。
+description: 撰写、改写或润色中文微信公众号的技术与 AI 创作文章，也可调整公众号排版。文字修改只交付相关文本；完整公众号交付包含原稿、HTML 源码、预览页和素材说明，事实检索按需执行。
 ---
 
 # 微信公众号文章写作
@@ -9,10 +9,12 @@ description: 为中文微信公众号撰写、改写和润色专业自然的技�
 
 ## 开始前
 
-1. 读取 [references/article-patterns.md](references/article-patterns.md) 和 [references/natural-writing.md](references/natural-writing.md)，选择文章结构并确定自然表达方式。有作者样稿时先识别其文风，样稿不是必需输入。
-2. 读取 [references/wechat-formatting.md](references/wechat-formatting.md) 和 [references/themes.md](references/themes.md)，确定交付格式与排版主题。
+先确定交付范围：仅文字润色或片段修改时，只读取自然写作规范与必要上下文，返回修改文本；用户要求修改已有文件时更新该文件。完整公众号文章交付才执行排版和四文件生成；仅排版时保留正文，仅读取排版、主题与相关检查项。以下资料和检查按该范围选择，不默认全部加载。
+
+1. 新写或调整文章结构时读取 [references/article-patterns.md](references/article-patterns.md)；文字创作或润色时读取 [references/natural-writing.md](references/natural-writing.md)。有作者样稿时先识别其文风，样稿不是必需输入。
+2. 需要排版交付时读取 [references/wechat-formatting.md](references/wechat-formatting.md) 和 [references/themes.md](references/themes.md)，确定格式与主题。
 3. 新写或补充事实性内容时，读取 [references/research-policy.md](references/research-policy.md)。
-4. 完稿后读取 [references/quality-checklist.md](references/quality-checklist.md)，在最多两轮修订内完成自然化重写与事实对照，不额外叠加润色轮次。
+4. 完稿后按 [references/quality-checklist.md](references/quality-checklist.md) 检查与当前范围相关的项目；通过即结束，最多两轮修订，不为凑轮次重写。
 5. 生成 `wechat.html` 时，以 [assets/wechat-preview-template.html](assets/wechat-preview-template.html) 为页面外壳，不重新设计复制逻辑。
 
 ## 默认受众与口吻
@@ -35,9 +37,9 @@ description: 为中文微信公众号撰写、改写和润色专业自然的技�
 7. 核验事实、版本、模型、平台、参数、代码行为和引用。
 8. 按自然写作规范重写有问题的段落，随后对照原稿检查事实、条件和受保护内容。去掉套话与机械节奏，保留有信息量的细节、真实的不确定性和技术术语。
 9. 判断图片是否真正帮助解释、证明或比较内容，只为必要图片设置占位。
-10. 按主题规则选择一款预设，将主题参数展开为行内样式。先生成唯一的文章 HTML 片段，再由它生成 `wechat.md` 和 `wechat.html`。
-11. 按规定格式生成四个文件，并用质量清单检查。自然化修改须同步到 Markdown 原稿及同源 HTML，全部修订合计最多两轮。
-12. 将文章自动保存到当前工作区，再返回摘要、文件链接和校验结果。
+10. 需要排版交付时按主题规则选择预设，将参数展开为行内样式。先生成唯一的文章 HTML 片段，再由它生成 `wechat.md` 和 `wechat.html`。
+11. 完整交付时生成四个文件，局部任务只更新请求产物；以质量清单的相关项检查。已有同源交付文件时保持其内容一致，全部修订合计最多两轮。
+12. 需要文件交付时保存到当前工作区，返回摘要、文件链接和校验结果；仅文字润色则直接返回修改文本。
 
 ## 提示词处理
 
@@ -83,7 +85,7 @@ description: 为中文微信公众号撰写、改写和润色专业自然的技�
 
 ## 默认交付
 
-文章通过质量检查后，默认保存到当前工作区的 `微信公众号文章/YYYY-MM-DD-短标题/`：
+完整公众号文章通过质量检查后，默认保存到当前工作区的 `微信公众号文章/YYYY-MM-DD-短标题/`；片段修改与文字润色不自动创建以下四文件：
 
 - `article.md`：3 个标题候选、60-100 字摘要、Markdown 正文和参考资料
 - `wechat.md`：简短说明和一个包含完整文章片段的 `html` 代码块

@@ -16,10 +16,10 @@
 - [agnes-image Skill 入口](skills/agnes-image/SKILL.md): Agnes Image 2.1 Flash 文生图 / 图生图技能的用法与约束
 - [agnes-video Skill 入口](skills/agnes-video/SKILL.md): Agnes-Video-V2.0 文生 / 图生 / 多图 / 关键帧视频技能（异步任务式）的用法与约束
 - [dingtalk-log Skill 入口](skills/dingtalk-log/SKILL.md): 钉钉工作日志生成；口语任务润色为正式编号列表
-- [cocos-mini-game Skill 入口](skills/cocos-mini-game/SKILL.md): 从主题调研、玩法提案、PRD 和任务规划开始，直接实施 Cocos Creator 3.8+ 微信/抖音双端 2D IAA 小游戏
+- [cocos-mini-game Skill 入口](skills/cocos-mini-game/SKILL.md): 按请求策划、开发或修改 Cocos Creator 3.8+ 的 2D 小游戏，支持微信与抖音，完整流程按需启用
 - [write-wechat-articles Skill 入口](skills/write-wechat-articles/SKILL.md): 编写简洁的技术、AI 创作实践与提示词分享公众号文章，并生成可复制的 HTML 富文本预览
 - [docs-writer Skill 入口](skills/docs-writer/SKILL.md): 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构
-- [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 根据动态趋势选题并创作、续写和诊断追读优先的网文，支持多平台书名同名检测、叙事反模式控制与漫剧固定视觉资产管理
+- [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 创作、续写和诊断追读优先的网文；市场选题、书名检测与漫剧资料按需启用，短篇和局部修改不套用连载全流程
 - [novel-to-script Skill 入口](skills/ai-drama/novel-to-script/SKILL.md): 小说改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注
 - [manju-short-video-polish Skill 入口](skills/ai-drama/manju-short-video-polish/SKILL.md): 小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播）
 - [industrial-storyboard Skill 入口](skills/ai-drama/industrial-storyboard/SKILL.md): 故事脚本转工业级电影分镜（机位/景别/运镜/光影/音效）
@@ -34,7 +34,7 @@
 - [character-turnaround-sheet Skill 入口](skills/ai-drama/character-turnaround-sheet/SKILL.md): 通用人类与类人角色三视图提示词，支持文字、角色卡与参考图特征锁定
 - [chibi-character-redraw Skill 入口](skills/ai-drama/chibi-character-redraw/SKILL.md): 任意参考角色 Q 版轻写实（3 头身、白底、收藏级手办）重绘提示词，严格锁定原角色识别度
 - [character-design-board Skill 入口](skills/ai-drama/character-design-board/SKILL.md): 横版角色设定板（黑金版式 + 主肖像 + 三视图 + 多细节栏目，16:9 收藏级设定稿）
-- [suno-lyric-creator Skill 入口](skills/ai-music/suno-lyric-creator/SKILL.md): 面向 Suno AI 的全曲风歌曲与纯音乐创作，含歌词、Prompt、配器、查重
+- [suno-lyric-creator Skill 入口](skills/ai-music/suno-lyric-creator/SKILL.md): 面向 Suno AI 创作或修改歌词、纯音乐结构、Prompt 与配器，名称查重按需执行
 - [music-mv-storyboard Skill 入口](skills/ai-music/music-mv-storyboard/SKILL.md): 根据歌曲信息生成覆盖整首歌的 MV 分镜与 Seedance / 即梦视频提示词
 - [提示词库索引](prompts/README.md): 按需手动使用的 Prompt 分类与新增说明
 

@@ -44,7 +44,7 @@ npx skills list -g
 | [`agnes-image`](./skills/agnes-image/SKILL.md) | Agnes Image 文生图 / 图生图 | [API](./skills/agnes-image/references/api.md) |
 | [`agnes-video`](./skills/agnes-video/SKILL.md) | Agnes Video 文生 / 图生 / 关键帧 | [API](./skills/agnes-video/references/api.md) |
 | [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [说明](./skills/dingtalk-log/references/usage.md) |
-| [`cocos-mini-game`](./skills/cocos-mini-game/SKILL.md) | 从主题、PRD 和任务规划开始，开发微信/抖音双端 Cocos Creator 2D IAA 小游戏 | [PRD 模板](./skills/cocos-mini-game/references/prd-template.md) |
+| [`cocos-mini-game`](./skills/cocos-mini-game/SKILL.md) | 按请求策划、开发或修改 Cocos Creator 2D 小游戏，支持微信与抖音，完整流程按需启用 | [PRD 模板](./skills/cocos-mini-game/references/prd-template.md) |
 | [`write-wechat-articles`](./skills/write-wechat-articles/SKILL.md) | 编写技术与 AI 创作实践公众号文章，内置 6 款阅读主题与 HTML 富文本预览 | [排版](./skills/write-wechat-articles/references/wechat-formatting.md)、[主题](./skills/write-wechat-articles/references/themes.md) |
 | [`docs-writer`](./skills/docs-writer/SKILL.md) | 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构 | [模板](./skills/docs-writer/references/templates.md) · [风格](./skills/docs-writer/references/style-guide.md) |
 
