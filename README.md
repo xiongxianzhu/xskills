@@ -112,6 +112,9 @@ npx skills list -g
 | [system-design](https://skills.sh/anthropics/knowledge-work-plugins/system-design) | 从需求、规模与约束出发设计系统边界、组件和技术架构 |
 | [karpathy-guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | 避免过度设计、精准改动 |
 | [grilling](https://skills.sh/mattpocock/skills/grilling) | 拷问式需求访谈：按设计树分轮提问，直到达成共识才动手 |
+| [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) | 通过追问完善计划或设计，同步记录架构决策与术语表 |
+| [improve-codebase-architecture](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | 扫描代码库的架构改进机会，生成可视化 HTML 报告，并通过追问细化选定方案 |
+| [handoff](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) | 将当前对话整理为交接文档，供新智能体接续工作 |
 | [to-spec](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec) | 将已有对话整理为需求规格，并发布到项目任务跟踪工具 |
 | [to-tickets](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) | 将计划、规格或对话拆为可独立验证的端到端任务，标明依赖并发布 |
 | [brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | 写代码前先澄清需求、对比方案、确认设计（Superpowers 入口） |
@@ -143,6 +146,9 @@ npx skills add anthropics/knowledge-work-plugins --skill documentation -g -y
 npx skills add anthropics/knowledge-work-plugins --skill system-design -g -y
 npx skills add multica-ai/andrej-karpathy-skills --skill karpathy-guidelines -g -y
 npx skills add mattpocock/skills --skill grilling -g -y
+npx skills add mattpocock/skills --skill grill-with-docs -g -y
+npx skills add mattpocock/skills --skill improve-codebase-architecture -g -y
+npx skills add mattpocock/skills --skill handoff -g -y
 npx skills add mattpocock/skills --skill to-spec -g -y
 npx skills add mattpocock/skills --skill to-tickets -g -y
 npx skills add obra/superpowers --skill brainstorming -g -y
