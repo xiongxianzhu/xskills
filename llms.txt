@@ -18,7 +18,7 @@
 - [dingtalk-log Skill 入口](skills/dingtalk-log/SKILL.md): 钉钉工作日志生成；口语任务润色为正式编号列表
 - [cocos-mini-game Skill 入口](skills/cocos-mini-game/SKILL.md): 按请求策划、开发或修改 Cocos Creator 3.8+ 的 2D 小游戏，支持微信与抖音，完整流程按需启用
 - [write-wechat-articles Skill 入口](skills/write-wechat-articles/SKILL.md): 编写简洁的技术、AI 创作实践与提示词分享公众号文章，并生成可复制的 HTML 富文本预览
-- [docs-writer Skill 入口](skills/docs-writer/SKILL.md): 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构
+- [docs-writer Skill 入口](skills/docs-writer/SKILL.md): 编写 README、部署、架构、技术栈、任务清单与数据库设计文档；基于事实，结构清晰，表达精简
 - [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 创作、续写和诊断追读优先的网文；市场选题、书名检测与漫剧资料按需启用，短篇和局部修改不套用连载全流程
 - [novel-to-script Skill 入口](skills/ai-drama/novel-to-script/SKILL.md): 小说改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注
 - [manju-short-video-polish Skill 入口](skills/ai-drama/manju-short-video-polish/SKILL.md): 小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播）
@@ -53,6 +53,8 @@
 
 - [API 文档编写规范](skills/api-docs/references/specification.md): 小节结构、参数表约定与禁止省略规则
 - [PRD 模板与撰稿细则](skills/prd-creator/references/template.md): PRD 结构、表述规范与输出路径建议
+- [项目文档结构规范](skills/docs-writer/references/templates.md): README、部署、架构、技术栈、任务清单、数据库设计及其他技术文档的职责、结构与验收要求
+- [技术文档写作规范](skills/docs-writer/references/style-guide.md): 信息取舍、简洁措辞、格式、命令示例、README 头部与校对清单
 - [Agnes Image API 参考](skills/agnes-image/references/api.md): 端点、参数、四种调用、响应与常见错误
 - [Agnes Video API 参考](skills/agnes-video/references/api.md): 异步端点、参数、四种调用、响应、状态与错误码
 - [dingtalk-log 使用说明](skills/dingtalk-log/references/usage.md): 适用场景、输入输出格式、示例与特殊情况

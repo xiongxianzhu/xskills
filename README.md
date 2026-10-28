@@ -46,7 +46,7 @@ npx skills list -g
 | [`dingtalk-log`](./skills/dingtalk-log/SKILL.md) | 口语任务润色为钉钉工作日志 | [说明](./skills/dingtalk-log/references/usage.md) |
 | [`cocos-mini-game`](./skills/cocos-mini-game/SKILL.md) | 按请求策划、开发或修改 Cocos Creator 2D 小游戏，支持微信与抖音，完整流程按需启用 | [PRD 模板](./skills/cocos-mini-game/references/prd-template.md) |
 | [`write-wechat-articles`](./skills/write-wechat-articles/SKILL.md) | 编写技术与 AI 创作实践公众号文章，内置 6 款阅读主题与 HTML 富文本预览 | [排版](./skills/write-wechat-articles/references/wechat-formatting.md)、[主题](./skills/write-wechat-articles/references/themes.md) |
-| [`docs-writer`](./skills/docs-writer/SKILL.md) | 技术文档写作（README / API / 教程 / 变更日志），五原则 + 四类最小结构 | [模板](./skills/docs-writer/references/templates.md) · [风格](./skills/docs-writer/references/style-guide.md) |
+| [`docs-writer`](./skills/docs-writer/SKILL.md) | 编写 README、部署、架构、技术栈、任务清单与数据库设计文档；基于事实，结构清晰，表达精简 | [结构规范](./skills/docs-writer/references/templates.md) · [写作规范](./skills/docs-writer/references/style-guide.md) |
 
 `write-wechat-articles` 会将文章保存到 `微信公众号文章/YYYY-MM-DD-短标题/`，并生成 `article.md`、`wechat.md`、`wechat.html` 和 `assets.md`。打开 `wechat.html`，点击“复制到公众号”后可直接粘贴到微信公众号编辑器。
 
