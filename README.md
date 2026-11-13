@@ -90,11 +90,28 @@ npx skills list -g
 
 其他命令：`list` / `find` / `update` / `remove` / `init`。完整说明见 [npm: skills](https://www.npmjs.com/package/skills)、[skills.sh](https://skills.sh)、[Agent Skills 规范](https://agentskills.io)。
 
+## 卸载
+
+使用 `npx skills remove` 卸载已安装技能，将示例中的 `api-docs` 替换为要卸载的技能名称。
+
+| 场景 | 命令 |
+| --- | --- |
+| 交互选择全局技能 | `npx skills remove -g` |
+| 卸载单个全局技能 | `npx skills remove api-docs -g -y` |
+| 卸载多个全局技能 | `npx skills remove api-docs prd-creator -g -y` |
+| 仅从 Cursor 全局卸载 | `npx skills remove api-docs -a cursor -g -y` |
+| 卸载当前项目的技能 | `npx skills remove api-docs -y` |
+
+全局安装的技能需加 `-g`；项目级卸载需在对应项目目录执行，不加 `-g`。去掉 `-y` 可保留确认提示。卸载后运行 `npx skills list -g`（项目级用 `npx skills list`），确认对应范围内已无该技能。
+
+参数说明见 [Skills CLI 卸载文档](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-remove)。
+
 ## 推荐技能
 
 | 技能 | 说明 |
 | --- | --- |
 | [frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | 高完成度前端界面 |
+| [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | 跨平台 UI/UX 设计，提供风格、配色、字体搭配与交互规范，支持按产品需求生成设计系统 |
 | [shadcn](https://ui.shadcn.com/docs/skills) | shadcn/ui 组件发现、安装与组合；读取 `components.json` |
 | [find-skills](https://github.com/vercel-labs/skills) | 对话中发现、安装技能 |
 | [git-commit](https://skills.sh/github/awesome-copilot/git-commit) | 约定式提交；说 commit / push 触发提交与推送 |
@@ -158,6 +175,12 @@ npx skills add pbakaus/impeccable@impeccable -g -y
 npx skills add cathrynlavery/diagram-design --skill diagram-design -g -y
 npx skills add tt-a1i/archify --skill archify -g -y
 npx skills add blader/humanizer --skill humanizer -g -y
+```
+
+`ui-ux-pro-max` 使用官方 CLI 全局安装到 `~/.agents/skills/`，可跨项目使用。搜索脚本需要 Python 3：
+
+```bash
+npx ui-ux-pro-max-cli init --ai universal --global
 ```
 
 ## 故障排查
