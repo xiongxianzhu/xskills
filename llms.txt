@@ -1,15 +1,15 @@
 # xskills
 
-> 个人维护的 Agent Skills 与提示词集合：25 个可安装 Skill 位于 `skills/`（另含 1 个内部模板，按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
+> 个人维护的 Agent Skills 与提示词集合：26 个可安装 Skill 位于 `skills/`（另含 1 个内部模板，按领域分扁平与 catalog 两类布局），按需使用的 Prompt 位于 `prompts/`，配合 `npx skills` CLI 安装 Skill 到 Cursor、Claude Code 等智能体全局目录。
 
 本仓库**不含应用业务代码**。Skill 以 **`SKILL.md` 入口**与 **references/** 为主；提示词为普通 Markdown，手动复制使用。入口说明见 [README](README.md)。
 
 ## Documentation
 
-- [README](README.md): 仓库说明、Skill 目录约定、安装方式、本仓库 25 个可安装技能、贡献入口与 `LICENSE`
+- [README](README.md): 仓库说明、Skill 目录约定、安装方式、本仓库 26 个可安装技能、贡献入口与 `LICENSE`
 - [贡献指南](CONTRIBUTING.md): 新增或修改 Skill 的目录、frontmatter、链接、本地校验和 Pull Request 要求
 - [技能质量标准](docs/skill-quality-standards.md): Skill 的触发、流程、输出、精简性、安全性与自动校验范围
-- [AI 漫剧技能分类索引](skills/ai-drama/README.md): ai-drama 容器，15 个 skill 按剧本/分镜/角色设定分组，含工作流概览
+- [AI 漫剧技能分类索引](skills/ai-drama/README.md): ai-drama 容器，16 个 skill 按全流程/剧本/分镜/角色设定分组，含工作流概览
 - [AI 音乐技能分类索引](skills/ai-music/README.md): ai-music 容器，2 个 skill，含工作流概览
 - [api-docs Skill 入口](skills/api-docs/SKILL.md): API 文档技能的使用场景与工作流索引
 - [prd-creator Skill 入口](skills/prd-creator/SKILL.md): PRD / 需求文档技能的使用场景与工作流索引
@@ -19,6 +19,7 @@
 - [cocos-mini-game Skill 入口](skills/cocos-mini-game/SKILL.md): 按请求策划、开发或修改 Cocos Creator 3.8+ 的 2D 小游戏，支持微信与抖音，完整流程按需启用
 - [write-wechat-articles Skill 入口](skills/write-wechat-articles/SKILL.md): 编写简洁的技术、AI 创作实践与提示词分享公众号文章，并生成可复制的 HTML 富文本预览
 - [docs-writer Skill 入口](skills/docs-writer/SKILL.md): 编写 README、部署、架构、技术栈、任务清单与数据库设计文档；基于事实，结构清晰，表达精简
+- [ai-drama-production Skill 入口](skills/ai-drama/ai-drama-production/SKILL.md): AI 漫剧从选题到成片的九步生产线，含声画对位、角色一致性、即梦 / Seedance 提示词与剪辑发布；支持 16:9 / 9:16，未指定画幅时默认 16:9
 - [ai-novel-writer Skill 入口](skills/ai-drama/ai-novel-writer/SKILL.md): 创作、续写和诊断追读优先的网文；市场选题、书名检测与漫剧资料按需启用，短篇和局部修改不套用连载全流程
 - [novel-to-script Skill 入口](skills/ai-drama/novel-to-script/SKILL.md): 小说改编为视频分镜脚本，含角色卡、场景拆分、画面提示词、声音标注
 - [manju-short-video-polish Skill 入口](skills/ai-drama/manju-short-video-polish/SKILL.md): 小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播）
@@ -92,6 +93,14 @@
 - [Seedance 视频规格](skills/ai-drama/seedance-storyboard/references/seedance-specs.md): 时长、分辨率、横竖屏与生成约束
 - [Seedance 提示词压缩](skills/ai-drama/seedance-storyboard/references/prompt-compression.md): ≤2000 字中文提示词的压缩与取舍规则
 - [即梦合规约束](skills/ai-drama/seedance-storyboard/references/compliance-jimeng.md): 即梦内容审核与提示词合规边界
+- [漫剧选题与开头钩子](skills/ai-drama/ai-drama-production/references/topic-and-hook.md): 赛道判断、对标拆解、六维选题评分、标题封面与前 15 秒结构
+- [漫剧集纲与单集结构](skills/ai-drama/ai-drama-production/references/series-structure.md): 全季骨架、单集七拍、卡点类型、集纲与伏笔表
+- [漫剧声画对位](skills/ai-drama/ai-drama-production/references/script-to-screen.md): 小说改写三层法、声画对位表、台词字数与停顿换算
+- [漫剧角色一致性](skills/ai-drama/ai-drama-production/references/character-consistency.md): 角色资产卡、身份锁定句、进化形态表、参考图复用与漂移修复
+- [漫剧横竖屏分镜](skills/ai-drama/ai-drama-production/references/storyboard.md): 16:9 / 9:16 构图与安全区、景别与运镜、镜头时长节奏、动作拆解
+- [漫剧逐镜提示词](skills/ai-drama/ai-drama-production/references/shot-prompts.md): 即梦 / Seedance 2.0 提示词骨架、时长与字数限制、画幅选择、首尾帧与模型替换
+- [漫剧配音配乐](skills/ai-drama/ai-drama-production/references/audio-and-music.md): 试音、TTS 分段、BGM 情绪曲线、音效清单与混音电平
+- [漫剧剪辑与发布](skills/ai-drama/ai-drama-production/references/edit-and-delivery.md): 剪辑顺序、横竖屏字幕与导出参数、调色、封面标题与发布检查
 - [古风美女风格库](skills/ai-drama/guofeng-beauty-turnaround/references/style-library.md): 仙侠、敦煌、江南等 8+ 种古风风格定义
 - [古风男主风格库](skills/ai-drama/guofeng-handsome-male-turnaround/references/style-library.md): 古风男性角色风格与配饰定义
 - [Q 版角色一致性锁定](skills/ai-drama/chibi-character-redraw/references/identity-lock.md): 脸/眼/眉/嘴/妆/气质/发/纹理等识别特征锁定规则
@@ -110,6 +119,7 @@
 - [Agnes Image 生成脚本](skills/agnes-image/scripts/generate.py): 文生图 / 图生图 CLI，SKILL 推荐优先调用
 - [Agnes Video 生成脚本](skills/agnes-video/scripts/generate.py): 视频生成 CLI，SKILL 推荐优先调用
 - [公众号富文本预览模板](skills/write-wechat-articles/assets/wechat-preview-template.html): 单文件深浅阅读预览、富文本复制与可见手动复制回退
+- [漫剧分镜时长校验脚本](skills/ai-drama/ai-drama-production/scripts/timeline.py): 按镜头数与权重分配时长、校验分镜 CSV 的总时长与每镜语速
 
 ## Configuration
 
