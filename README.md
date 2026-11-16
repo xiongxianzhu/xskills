@@ -7,7 +7,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Spec-6366F1?style=for-the-badge&logo=openai&logoColor=white)](https://agentskills.io)
 [![Skills CLI](https://img.shields.io/badge/CLI-npx%20skills-0EA5E9?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/skills)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-26-F59E0B?style=for-the-badge)](./skills/)
+[![Skills](https://img.shields.io/badge/Skills-27-F59E0B?style=for-the-badge)](./skills/)
 [![llms.txt](https://img.shields.io/badge/llms.txt-Navigation-64748B?style=for-the-badge)](./llms.txt)
 [![Validate Skills](https://img.shields.io/github/actions/workflow/status/xiongxianzhu/xskills/validate-skills.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=Validate%20Skills)](https://github.com/xiongxianzhu/xskills/actions/workflows/validate-skills.yml)
 [![Stars](https://img.shields.io/github/stars/xiongxianzhu/xskills?style=for-the-badge&logo=github&label=Stars&color=181717)](https://github.com/xiongxianzhu/xskills/stargazers)
@@ -47,6 +47,7 @@ npx skills list -g
 | [`cocos-mini-game`](./skills/cocos-mini-game/SKILL.md) | 按请求策划、开发或修改 Cocos Creator 2D 小游戏，支持微信与抖音，完整流程按需启用 | [PRD 模板](./skills/cocos-mini-game/references/prd-template.md) |
 | [`write-wechat-articles`](./skills/write-wechat-articles/SKILL.md) | 编写技术与 AI 创作实践公众号文章，内置 6 款阅读主题与 HTML 富文本预览 | [排版](./skills/write-wechat-articles/references/wechat-formatting.md)、[主题](./skills/write-wechat-articles/references/themes.md) |
 | [`docs-writer`](./skills/docs-writer/SKILL.md) | 编写 README、部署、架构、技术栈、任务清单与数据库设计文档；基于事实，结构清晰，表达精简 | [结构规范](./skills/docs-writer/references/templates.md) · [写作规范](./skills/docs-writer/references/style-guide.md) |
+| [`write-articles`](./skills/write-articles/SKILL.md) | 撰写或改写文章，保存为 `标题.md`，包含标题、URL 路由标识（slug）、正文、标签、摘要和创建时间 | 默认保存到 `articles/`，使用 YAML 元数据与 Markdown 正文 |
 
 `write-wechat-articles` 会将文章保存到 `微信公众号文章/YYYY-MM-DD-短标题/`，并生成 `article.md`、`wechat.md`、`wechat.html` 和 `assets.md`。打开 `wechat.html`，点击“复制到公众号”后可直接粘贴到微信公众号编辑器。
 
