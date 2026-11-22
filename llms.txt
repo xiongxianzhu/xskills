@@ -26,7 +26,7 @@
 - [manju-short-video-polish Skill 入口](skills/ai-drama/manju-short-video-polish/SKILL.md): 小说原文润色为漫剧短视频文案（第一人称、黄金钩子、高完播）
 - [industrial-storyboard Skill 入口](skills/ai-drama/industrial-storyboard/SKILL.md): 故事脚本转工业级电影分镜（机位/景别/运镜/光影/音效）
 - [director-storyboard-sheet Skill 入口](skills/ai-drama/director-storyboard-sheet/SKILL.md): 分镜脚本转电影级导演故事板完整提示词
-- [seedance-storyboard Skill 入口](skills/ai-drama/seedance-storyboard/SKILL.md): Seedance / 即梦 / 小云雀沉浸式短片分镜与 ≤2000 字中文提示词
+- [seedance-storyboard Skill 入口](skills/ai-drama/seedance-storyboard/SKILL.md): Seedance 2.0+ 导演分镜与提示词，按版本适配，支持素材绑定、时间预算、连续性、长片分段与局部编辑
 - [jimeng-split-prompts Skill 入口](skills/ai-drama/jimeng-split-prompts/SKILL.md): 分镜脚本拆成即梦短视频提示词（每段 ≤15 秒 ≤2000 字）
 - [guofeng-beauty-portrait Skill 入口](skills/ai-drama/guofeng-beauty-portrait/SKILL.md): 国漫 CG 美女头像提示词，1:1
 - [guofeng-beauty-halfbody Skill 入口](skills/ai-drama/guofeng-beauty-halfbody/SKILL.md): 国漫 CG 美女上半身提示词，9:16
@@ -91,9 +91,13 @@
 - [网文原创性控制](skills/ai-drama/ai-novel-writer/references/originality-control.md): 熟悉承诺、差异化变量、故事引擎与同质化审判
 - [网文质量审判](skills/ai-drama/ai-novel-writer/references/quality-review.md): 阅读检查点、硬性失败项与最小重写
 - [漫剧改编交接规范](skills/ai-drama/ai-novel-writer/references/manju-adaptation.md): 正文定稿后的拆集、可视化与制作压缩交接
-- [Seedance 视频规格](skills/ai-drama/seedance-storyboard/references/seedance-specs.md): 时长、分辨率、横竖屏与生成约束
-- [Seedance 提示词压缩](skills/ai-drama/seedance-storyboard/references/prompt-compression.md): ≤2000 字中文提示词的压缩与取舍规则
-- [即梦合规约束](skills/ai-drama/seedance-storyboard/references/compliance-jimeng.md): 即梦内容审核与提示词合规边界
+- [Seedance 版本与平台适配](skills/ai-drama/seedance-storyboard/references/seedance-specs.md): 带来源与日期的能力基线，区分版本、入口、任务模式和创作建议
+- [Seedance 导演调度与时间预算](skills/ai-drama/seedance-storyboard/references/directing-and-timing.md): 节拍、对白估时、运镜路径、动作因果与分段接点
+- [Seedance 素材绑定与连续性](skills/ai-drama/seedance-storyboard/references/continuity-and-references.md): 参考用途、身份、轴线、视线、持物、跨段状态与局部修改
+- [Seedance 提示词编译与压缩](skills/ai-drama/seedance-storyboard/references/prompt-compression.md): 独立生成段、保真压缩、每段与全文预算、字幕及计数口径
+- [Seedance 输出与验收](skills/ai-drama/seedance-storyboard/references/output-and-review.md): 完整版、精简版、局部修改版及质量审核
+- [Seedance 表演型成功案例](skills/ai-drama/seedance-storyboard/references/performance-pattern.md): 用户反馈成功的对镜口播写法、模块结构、情绪节拍及动作戏迁移边界
+- [Seedance 平台边界与失败处理](skills/ai-drama/seedance-storyboard/references/compliance-jimeng.md): 按实际错误排查模式、素材、内容和生成质量
 - [漫剧选题与开头钩子](skills/ai-drama/ai-drama-production/references/topic-and-hook.md): 赛道判断、对标拆解、六维选题评分、标题封面与前 15 秒结构
 - [漫剧集纲与单集结构](skills/ai-drama/ai-drama-production/references/series-structure.md): 全季骨架、单集七拍、卡点类型、集纲与伏笔表
 - [漫剧声画对位](skills/ai-drama/ai-drama-production/references/script-to-screen.md): 小说改写三层法、声画对位表、台词字数与停顿换算
@@ -115,6 +119,8 @@
 
 ## Examples
 
+- [Seedance 完整示例](skills/ai-drama/seedance-storyboard/references/examples.md): 角色一镜到底、30 秒动作分段、精确字幕和 2.5 局部编辑
+- [Seedance 行为评估](skills/ai-drama/seedance-storyboard/evals/evals.json): 10 个真实任务，检查需求保真、时间预算、连续性和素材引用
 - [API 文档示例（虚构图书管理系统）](skills/api-docs/references/examples.md): 与 specification 对齐的完整示例
 - [PRD 示例与澄清对话示例](skills/prd-creator/references/examples.md): 完整 PRD 示例与需求澄清对话
 - [Agnes Image 生成脚本](skills/agnes-image/scripts/generate.py): 文生图 / 图生图 CLI，SKILL 推荐优先调用

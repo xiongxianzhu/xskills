@@ -1,95 +1,116 @@
 #!/usr/bin/env python3
-"""Grade seedance-storyboard eval outputs."""
+"""检查 Seedance 评估输出的确定性约束；创作质量另行人工评审。"""
+from __future__ import annotations
+
+import argparse
 import json
 import re
-import sys
 from pathlib import Path
 
 
-NEGATIVE_WORDS = ["严禁", "禁止", "不要", "绝不", "切勿"]
+EVALS_PATH = Path(__file__).resolve().parents[1] / "evals" / "evals.json"
+REFERENCE_PATTERN = re.compile(r"@(图片|视频|音频|image|video|audio)\s*(\d+)(?![0-9A-Za-z_])", re.IGNORECASE)
+REFERENCE_KINDS = {"图片": "image", "视频": "video", "音频": "audio"}
 
 
-def extract_prompt_block(text: str) -> str:
-    m = re.search(r"```(?:text)?\s*\n(.*?)```", text, re.DOTALL)
-    return m.group(1).strip() if m else ""
+def normalized_text(text: str) -> str:
+    return text.replace("\r\n", "\n").replace("\r", "\n").strip()
+
+
+def extract_prompt_blocks(text: str) -> list[str]:
+    """读取顶层 text 或无语言围栏，避免把 Python/JSON 代码算成提示词。"""
+    blocks: list[str] = []
+    marker = None
+    lines: list[str] = []
+    accept = False
+    for line in normalized_text(text).splitlines():
+        if marker is None:
+            match = re.fullmatch(r" {0,3}(`{3,}|~{3,})([^\n]*)", line)
+            if match:
+                marker = match.group(1)
+                accept = match.group(2).strip().lower() in {"", "text"}
+                lines = []
+        elif re.fullmatch(r" {0,3}" + re.escape(marker[0]) + "{" + str(len(marker)) + r",}\s*", line):
+            if accept:
+                blocks.append(normalized_text("\n".join(lines)))
+            marker = None
+        else:
+            lines.append(line)
+    return blocks
+
+
+def reference_ids(text: str) -> set[str]:
+    return {
+        REFERENCE_KINDS.get(kind.lower(), kind.lower()) + str(int(number))
+        for kind, number in REFERENCE_PATTERN.findall(text)
+    }
+
+
+def load_case(name: str, path: Path = EVALS_PATH) -> dict:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    matches = [case for case in data["evals"] if case["name"] == name]
+    if len(matches) != 1:
+        raise ValueError(f"评估名称不存在或不唯一：{name}")
+    return matches[0]
 
 
 def grade_output(content: str, eval_name: str) -> dict:
-    prompt_block = extract_prompt_block(content)
-    expectations = []
+    case = load_case(eval_name)
+    rules = case["deterministic"]
+    text = normalized_text(content)
+    blocks = extract_prompt_blocks(text)
+    checks: list[dict] = []
 
-    # char limit
-    char_count = len(prompt_block)
-    passed_char = char_count <= 2000 if prompt_block else False
-    expectations.append({
-        "text": "最终提示词块字数 ≤ 2000",
-        "passed": passed_char,
-        "evidence": f"提示词块 {char_count} 字" if prompt_block else "未找到 ```text 提示词块"
-    })
+    def check(label: str, passed: bool, evidence: str) -> None:
+        checks.append({"text": label, "passed": passed, "evidence": evidence})
 
-    # contains checks per eval
-    checks = {
-        "bamboo-portrait-9x16": [
-            ("包含「画面无任何字幕」", "画面无任何字幕" in content),
-            ("包含画幅 9:16", "9:16" in content),
-            ("包含时长 5秒", "5秒" in content),
-            ("使用镜头1/镜头2 编号格式", "镜头1" in content and "镜头2" in content),
-        ],
-        "cyberpunk-chase-16x9": [
-            ("包含「画面无任何字幕」", "画面无任何字幕" in content),
-            ("包含画幅 16:9", "16:9" in content),
-            ("包含时长 12秒", "12秒" in content),
-            ("包含对白「他们来了」或 {他们来了}", "他们来了" in content),
-        ],
-        "waterfall-doc-16x9": [
-            ("包含「画面无任何字幕」", "画面无任何字幕" in content),
-            ("包含画幅 16:9", "16:9" in content),
-            ("包含时长 15秒", "15秒" in content),
-            ("使用镜头编号格式（镜头1）", "镜头1" in content),
-        ],
-    }
+    check("输出非空", bool(text), f"全文 {len(text)} 字符")
+    minimum = rules.get("min_prompt_blocks", 1)
+    maximum = rules.get("max_prompt_blocks")
+    valid_count = len(blocks) >= minimum and (maximum is None or len(blocks) <= maximum)
+    check("提示词块数量符合任务", valid_count, f"{len(blocks)} 块；最少 {minimum}，最多 {maximum if maximum is not None else '不限定'}")
 
-    for text, passed in checks.get(eval_name, []):
-        expectations.append({
-            "text": text,
-            "passed": passed,
-            "evidence": "通过" if passed else "未在输出中找到"
-        })
+    limit = rules.get("max_prompt_chars", 2000)
+    for index, block in enumerate(blocks, 1):
+        check(f"提示词块 {index} 非空且未超预算", bool(block) and len(block) <= limit, f"{len(block)}/{limit} 字符")
 
-    # negative words - check prompt block primarily
-    check_text = prompt_block or content
-    found_neg = [w for w in NEGATIVE_WORDS if w in check_text]
-    expectations.append({
-        "text": "无严禁/禁止/不要等负面词",
-        "passed": len(found_neg) == 0,
-        "evidence": f"发现: {found_neg}" if found_neg else "无负面词"
-    })
+    if "max_output_chars" in rules:
+        output_limit = rules["max_output_chars"]
+        check("全文未超预算", len(text) <= output_limit, f"{len(text)}/{output_limit} 字符，包含说明与围栏")
 
-    passed_count = sum(1 for e in expectations if e["passed"])
+    for required in rules.get("required_prompt_text", []):
+        check(f"提示词保留原文：{required}", any(required in block for block in blocks), "仅检查生成提示词，不以外部说明代替")
+
+    allowed = set().union(*(reference_ids(label) for label in rules.get("allowed_references", [])))
+    used = set().union(*(reference_ids(block) for block in blocks))
+    unexpected = sorted(used - allowed)
+    check("提示词无未声明素材引用", not unexpected, f"未声明：{unexpected}" if unexpected else f"引用：{sorted(used)}")
+
+    passed = sum(item["passed"] for item in checks)
     return {
-        "expectations": expectations,
-        "pass_rate": passed_count / len(expectations) if expectations else 0,
-        "passed_count": passed_count,
-        "total_count": len(expectations),
+        "eval": eval_name,
+        "automatic_checks_only": True,
+        "expectations": checks,
+        "passed_count": passed,
+        "total_count": len(checks),
+        "pass_rate": passed / len(checks),
+        "prompt_char_counts": [len(block) for block in blocks],
+        "manual_review_required": case["criteria"],
     }
 
 
-def main():
-    base = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("seedance-storyboard-workspace/iteration-1")
-    for eval_dir in sorted(base.iterdir()):
-        if not eval_dir.is_dir():
-            continue
-        eval_name = eval_dir.name
-        for config in ("with_skill", "without_skill"):
-            out_path = eval_dir / config / "outputs" / "output.md"
-            if not out_path.exists():
-                continue
-            content = out_path.read_text(encoding="utf-8")
-            result = grade_output(content, eval_name)
-            grading_path = eval_dir / config / "grading.json"
-            grading_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-            print(f"{eval_name}/{config}: {result['passed_count']}/{result['total_count']}")
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("output", type=Path, help="待评估的 Markdown 输出；只读，不自动写报告")
+    parser.add_argument("--eval", required=True, help="evals.json 中的 name")
+    args = parser.parse_args()
+    try:
+        result = grade_output(args.output.read_text(encoding="utf-8"), args.eval)
+    except (OSError, UnicodeError, ValueError, KeyError) as exc:
+        parser.exit(2, f"评估失败：{exc}\n")
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0 if result["passed_count"] == result["total_count"] else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

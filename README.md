@@ -62,6 +62,8 @@ npx skills list -g
 | [`ai-drama`](./skills/ai-drama/README.md) | 16 | AI 漫剧全链路：选题立项 → 文案 → 分镜 → 视频提示词 → 角色设定 → 成片发布 |
 | [`ai-music`](./skills/ai-music/README.md) | 2 | AI 音乐：Suno 作词与配器、MV 分镜与视频提示词 |
 
+其中 [`seedance-storyboard`](./skills/ai-drama/seedance-storyboard/SKILL.md) 面向 Seedance 2.0 及后续版本，提供导演分镜、素材绑定、时间预算、动作与跨镜连续性、独立分段提示词和局部编辑方案；按实际版本与入口适配生成限制。
+
 新建 Skill：复制 [`skills/_template/`](./skills/_template/SKILL.md)（`metadata.internal: true`，不会被一键安装）。
 
 ## 参与贡献

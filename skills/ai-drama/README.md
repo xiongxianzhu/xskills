@@ -50,7 +50,7 @@ npx skills add xiongxianzhu/xskills --skill <技能名> -g -y
 | --- | --- |
 | [`industrial-storyboard`](./industrial-storyboard/SKILL.md) | 故事脚本 → 工业级电影分镜（机位/景别/运镜/光影/音效），可直接喂 AI 视频模型 |
 | [`director-storyboard-sheet`](./director-storyboard-sheet/SKILL.md) | 分镜脚本 → 电影级导演故事板（Storyboard Sheet）完整提示词 |
-| [`seedance-storyboard`](./seedance-storyboard/SKILL.md) | Seedance 2.0 / 即梦 / 小云雀沉浸式短片分镜，4–15 秒、横竖屏、≤2000 字中文提示词 |
+| [`seedance-storyboard`](./seedance-storyboard/SKILL.md) | Seedance 2.0+ 导演分镜：剧情 / 角色 PV / 动作 / 广告，素材绑定、时间预算、跨镜连续性、独立分段提示词与局部视频编辑，按实际版本适配 |
 | [`jimeng-split-prompts`](./jimeng-split-prompts/SKILL.md) | 把分镜脚本拆成即梦可生成的短视频提示词（每段 ≤15 秒 ≤2000 字） |
 
 ### 角色设定（提示词）
